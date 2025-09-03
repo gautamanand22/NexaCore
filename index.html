@@ -7,104 +7,37 @@
   <title>NexaCore Consultancy Services - IT Solutions</title>
   <meta name="description"
     content="Empowering Businesses with Expert IT Consultancy and Innovative Solutions. Leading IT consultancy, website design, app development, product photography, and marketing services.">
-  <meta name="keywords"
-    content="IT consultancy, website design, app development, product photography, digital marketing, business solutions, NexaCore">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="NexaCore Consultancy Services">
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="NexaCore Consultancy Services - IT Solutions">
-  <meta property="og:description" content="Empowering Businesses with Expert IT Consultancy and Innovative Solutions">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nexacoreconsultancy.com">
-  <meta property="og:image" content="https://nexacoreconsultancy.com/og-image.jpg">
-  <meta property="og:site_name" content="NexaCore Consultancy Services">
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NexaCore Consultancy Services - IT Solutions">
-  <meta name="twitter:description" content="Empowering Businesses with Expert IT Consultancy and Innovative Solutions">
-  <meta name="twitter:image" content="https://nexacoreconsultancy.com/og-image.jpg">
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://nexacoreconsultancy.com">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-  <!-- Preload critical fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Google Fonts - Inter & Montserrat -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
   <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-
-  <!-- GSAP Library -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    /* Reset and Base Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
     :root {
-      /* Brand Colors - Matching archi-malinstudio.com */
       --bg-beige: #FFFBF3;
       --text-dark: #171311;
       --accent-grey: #666666;
       --white: #FFFFFF;
       --black: #000000;
-
-      /* Typography */
       --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-secondary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-      /* Spacing */
-      --space-xs: 0.5rem;
-      --space-sm: 1rem;
-      --space-md: 1.5rem;
-      --space-lg: 2rem;
-      --space-xl: 3rem;
-      --space-2xl: 4rem;
-      --space-3xl: 6rem;
-
-      /* Border Radius */
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
-
-      /* Transitions */
-      --transition-fast: 0.2s ease;
-      --transition-normal: 0.3s ease;
-      --transition-slow: 0.5s ease;
-
-      /* Z-index */
-      --z-header: 1000;
-      --z-modal: 2000;
-      --z-loading: 3000;
     }
 
     html {
-      font-size: 16px;
       scroll-behavior: smooth;
+      overflow-x: hidden;
       scroll-snap-type: y mandatory;
     }
 
@@ -113,49 +46,8 @@
       background-color: var(--bg-beige);
       color: var(--text-dark);
       overflow-x: hidden;
-      overflow-y: auto;
-      height: auto;
-      position: relative;
-      scroll-behavior: smooth;
-    }
-
-    /* Loading Screen */
-    .loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-beige);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: var(--z-loading);
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
-
-    .loading-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader {
-      width: 60px;
-      height: 60px;
-      border: 2px solid transparent;
-      border-top: 2px solid var(--text-dark);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
+      margin: 0;
+      padding: 0;
     }
 
     /* Header */
@@ -170,8 +62,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 var(--space-xl);
-      z-index: var(--z-header);
+      padding: 0 2rem;
+      z-index: 1000;
       border-bottom: 1px solid rgba(23, 19, 17, 0.1);
     }
 
@@ -181,53 +73,26 @@
       font-weight: 700;
       color: var(--text-dark);
       text-decoration: none;
-      letter-spacing: -0.02em;
     }
 
     .nav {
       display: flex;
       list-style: none;
-      gap: var(--space-xl);
+      gap: 2rem;
     }
 
     .nav-link {
       color: var(--text-dark);
       text-decoration: none;
       font-weight: 400;
-      font-size: 0.95rem;
-      transition: all var(--transition-normal);
-      position: relative;
+      transition: all 0.3s ease;
       padding: 8px 16px;
-      border-radius: var(--radius-sm);
+      border-radius: 4px;
     }
 
     .nav-link:hover {
       color: var(--accent-grey);
-      transform: translateY(-2px);
       background: rgba(23, 19, 17, 0.05);
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--text-dark), var(--accent-grey));
-      transition: width var(--transition-normal);
-      border-radius: 1px;
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 80%;
-    }
-
-    .nav-link.active {
-      color: var(--text-dark);
-      font-weight: 600;
     }
 
     /* Mobile Menu */
@@ -242,50 +107,12 @@
       width: 24px;
       height: 2px;
       background: var(--text-dark);
-      transition: var(--transition-normal);
+      transition: 0.3s;
     }
 
-    .mobile-nav {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 100%;
-      height: 100vh;
-      background: var(--bg-beige);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-lg);
-      transition: right var(--transition-slow);
-      z-index: 999;
-    }
-
-    .mobile-nav.active {
-      right: 0;
-    }
-
-    .mobile-nav-link {
-      color: var(--text-dark);
-      text-decoration: none;
-      font-size: 1.5rem;
-      font-weight: 500;
-      transition: var(--transition-normal);
-    }
-
-    .mobile-nav-link:hover {
-      color: var(--accent-grey);
-      transform: scale(1.1);
-    }
-
-    /* Vertical Container */
-    .vertical-container {
-      width: 100%;
-      min-height: 100vh;
-    }
-
-    .vertical-scroll {
-      width: 100%;
+    /* Main Container */
+    .main-container {
+      padding-top: 80px;
     }
 
     .section {
@@ -295,29 +122,24 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      padding: var(--space-xl) 0;
       scroll-snap-align: start;
       scroll-snap-stop: always;
     }
 
-    /* Hero Section */
-    .hero {
+    /* Section 1 - Hero */
+    .section.hero {
       background: linear-gradient(rgba(23, 19, 17, 0.4), rgba(23, 19, 17, 0.4)),
         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2200&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      text-align: center;
       color: var(--white);
-      position: relative;
-      z-index: 1;
+      text-align: center;
     }
 
     .hero-content {
       max-width: 800px;
-      padding: 0 var(--space-lg);
-      position: relative;
-      z-index: 2;
+      padding: 0 2rem;
     }
 
     .hero-title {
@@ -325,22 +147,16 @@
       font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 800;
       line-height: 1.1;
-      margin-bottom: var(--space-md);
-      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
       color: var(--white);
-      opacity: 0;
-      transform: translateY(50px);
     }
 
     .hero-subtitle {
       font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       font-weight: 400;
-      margin-bottom: var(--space-xl);
+      margin-bottom: 2rem;
       opacity: 0.9;
       line-height: 1.4;
-      color: var(--white);
-      opacity: 0;
-      transform: translateY(30px);
     }
 
     .cta-button {
@@ -349,119 +165,50 @@
       background: var(--bg-beige);
       color: var(--text-dark);
       text-decoration: none;
-      border-radius: var(--radius-sm);
+      border-radius: 4px;
       font-weight: 600;
       font-size: 1rem;
-      transition: all var(--transition-normal);
-      letter-spacing: 0.02em;
-      opacity: 0;
-      transform: translateY(20px);
+      transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(255, 251, 243, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transition: left 0.5s;
-    }
-
-    .cta-button:hover::before {
-      left: 100%;
     }
 
     .cta-button:hover {
       background: var(--white);
-      transform: translateY(-3px) scale(1.05);
+      transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(255, 251, 243, 0.4);
     }
 
-    .cta-button:active {
-      transform: translateY(-1px) scale(1.02);
-    }
-
-    /* About Section */
-    .about {
+    /* Section 2 - About */
+    .section.about {
       background: var(--white);
-      padding: 0 var(--space-xl);
+      text-align: center;
+      padding: 0 2rem;
     }
 
     .about-content {
-      max-width: 1200px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-3xl);
-      align-items: center;
+      max-width: 800px;
     }
 
-    .about-text h2 {
+    .about-content h2 {
       font-family: var(--font-secondary);
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
-      margin-bottom: var(--space-lg);
+      margin-bottom: 2rem;
       line-height: 1.2;
     }
 
-    .about-text p {
+    .about-content p {
       font-size: 1.1rem;
       line-height: 1.6;
       opacity: 0.8;
-      margin-bottom: var(--space-md);
+      margin-bottom: 1rem;
     }
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-lg);
-    }
-
-    .team-card {
-      text-align: center;
-      padding: var(--space-lg);
-      border-radius: var(--radius-lg);
+    /* Section 3 - Services */
+    .section.services {
       background: var(--bg-beige);
-      transition: var(--transition-normal);
-    }
-
-    .team-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(23, 19, 17, 0.1);
-    }
-
-    .team-photo {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: var(--space-sm);
-    }
-
-    .team-name {
-      font-weight: 600;
-      margin-bottom: var(--space-xs);
-    }
-
-    .team-role {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    /* Services Section */
-    .services {
-      background: var(--bg-beige);
-      padding: 0 var(--space-xl);
-    }
-
-    .services-content {
-      max-width: 1400px;
-      width: 100%;
+      flex-direction: column;
+      padding: 2rem;
     }
 
     .services-title {
@@ -469,22 +216,24 @@
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       text-align: center;
-      margin-bottom: var(--space-3xl);
+      margin-bottom: 3rem;
     }
 
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--space-lg);
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
     }
 
     .service-card {
       background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
+      border-radius: 12px;
+      padding: 2rem;
       text-align: center;
-      transition: all var(--transition-normal);
-      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(23, 19, 17, 0.1);
     }
 
     .service-card:hover {
@@ -495,8 +244,8 @@
     .service-icon {
       width: 60px;
       height: 60px;
-      margin: 0 auto var(--space-md);
-      border-radius: var(--radius-md);
+      margin: 0 auto 1rem;
+      border-radius: 8px;
       background: var(--text-dark);
       display: flex;
       align-items: center;
@@ -508,7 +257,7 @@
     .service-title {
       font-weight: 600;
       font-size: 1.2rem;
-      margin-bottom: var(--space-sm);
+      margin-bottom: 1rem;
     }
 
     .service-description {
@@ -516,15 +265,11 @@
       line-height: 1.5;
     }
 
-    /* Portfolio Section */
-    .portfolio {
+    /* Section 4 - Portfolio */
+    .section.portfolio {
       background: var(--white);
-      padding: 0 var(--space-xl);
-    }
-
-    .portfolio-content {
-      max-width: 1400px;
-      width: 100%;
+      flex-direction: column;
+      padding: 2rem;
     }
 
     .portfolio-title {
@@ -532,20 +277,22 @@
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       text-align: center;
-      margin-bottom: var(--space-3xl);
+      margin-bottom: 3rem;
     }
 
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-lg);
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
     }
 
     .portfolio-item {
       background: var(--bg-beige);
-      border-radius: var(--radius-lg);
+      border-radius: 12px;
       overflow: hidden;
-      transition: var(--transition-normal);
+      transition: all 0.3s ease;
       cursor: pointer;
     }
 
@@ -561,13 +308,13 @@
     }
 
     .portfolio-info {
-      padding: var(--space-lg);
+      padding: 1.5rem;
     }
 
     .portfolio-project-title {
       font-weight: 600;
       font-size: 1.1rem;
-      margin-bottom: var(--space-xs);
+      margin-bottom: 0.5rem;
     }
 
     .portfolio-description {
@@ -576,242 +323,94 @@
       font-size: 0.95rem;
     }
 
-    /* Clients Section */
-    .clients {
-      background: var(--bg-beige);
-      padding: 0 var(--space-xl);
-    }
-
-    .clients-content {
-      max-width: 1200px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .clients-title {
-      font-family: var(--font-secondary);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      margin-bottom: var(--space-3xl);
-    }
-
-    .client-logos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: var(--space-lg);
-      margin-bottom: var(--space-3xl);
-    }
-
-    .client-logo {
-      height: 80px;
-      opacity: 0.6;
-      transition: var(--transition-normal);
-      filter: grayscale(100%);
-    }
-
-    .client-logo:hover {
-      opacity: 1;
-      filter: grayscale(0%);
-    }
-
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-lg);
-    }
-
-    .testimonial {
-      background: var(--white);
-      padding: var(--space-xl);
-      border-radius: var(--radius-lg);
-      text-align: left;
-    }
-
-    .testimonial-text {
-      font-style: italic;
-      line-height: 1.6;
-      margin-bottom: var(--space-md);
-      opacity: 0.8;
-    }
-
-    .testimonial-author {
-      font-weight: 600;
-    }
-
-    .testimonial-company {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    /* Vision Section */
-    .vision {
+    /* Section 5 - Contact */
+    .section.contact {
       background: linear-gradient(rgba(23, 19, 17, 0.7), rgba(23, 19, 17, 0.7)),
         url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
       color: var(--white);
       text-align: center;
+      background-attachment: fixed;
     }
 
-    .vision-content {
+    .contact-content {
       max-width: 800px;
-      padding: 0 var(--space-lg);
+      padding: 0 2rem;
     }
 
-    .vision-title {
+    .contact-title {
       font-family: var(--font-secondary);
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
-      margin-bottom: var(--space-lg);
+      margin-bottom: 2rem;
     }
 
-    .vision-text {
+    .contact-text {
       font-size: 1.2rem;
       line-height: 1.6;
       opacity: 0.9;
+      margin-bottom: 2rem;
     }
 
-    /* Footer/Contact Section */
-    .footer {
-      background: var(--text-dark);
-      color: var(--bg-beige);
-      padding: 0 var(--space-xl);
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      width: 100%;
+    .contact-info {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-item {
       text-align: center;
     }
 
-    .footer-section h3 {
-      font-weight: 600;
-      margin-bottom: var(--space-md);
-      font-size: 1.1rem;
+    .contact-item i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
     }
 
-    .footer-section p,
-    .footer-section a {
-      opacity: 0.8;
-      line-height: 1.6;
-      text-decoration: none;
-      color: inherit;
-      transition: var(--transition-normal);
-    }
-
-    .footer-section a:hover {
-      opacity: 1;
-    }
-
-    .social-links {
-      display: flex;
-      gap: var(--space-md);
-      justify-content: center;
-      margin-top: var(--space-md);
-    }
-
-    .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--bg-beige);
-      color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-normal);
-    }
-
-    .social-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(255, 251, 243, 0.3);
-    }
-
-    .copyright {
-      text-align: center;
-      padding-top: var(--space-xl);
-      border-top: 1px solid rgba(255, 251, 243, 0.2);
-      opacity: 0.6;
-      font-size: 0.9rem;
-    }
-
-    /* Modal */
-    .modal {
+    /* Navigation Dots */
+    .slide-nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: var(--z-modal);
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition-normal);
+      gap: 1rem;
+      z-index: 1000;
     }
 
-    .modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      background: var(--white);
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
-      position: relative;
-      transform: scale(0.7);
-      transition: transform var(--transition-normal);
-    }
-
-    .modal.active .modal-content {
-      transform: scale(1);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: var(--space-md);
-      right: var(--space-md);
-      background: none;
-      border: none;
-      font-size: 1.5rem;
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(23, 19, 17, 0.3);
       cursor: pointer;
-      color: var(--text-dark);
-      transition: var(--transition-normal);
-    }
-
-    .modal-close:hover {
-      transform: scale(1.1);
+      transition: all 0.3s ease;
     }
 
     /* Scroll Indicator */
     .scroll-indicator {
       position: fixed;
-      bottom: var(--space-lg);
-      right: var(--space-lg);
-      z-index: 500;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: var(--space-xs);
+      gap: 1rem;
+      z-index: 1000;
     }
 
-    .scroll-dot {
+    .nav-dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
       background: rgba(23, 19, 17, 0.3);
-      transition: all var(--transition-normal);
       cursor: pointer;
+      transition: all 0.3s ease;
       position: relative;
-      border: 2px solid transparent;
     }
 
-    .scroll-dot::before {
+    .nav-dot::after {
       content: '';
       position: absolute;
       top: 50%;
@@ -822,296 +421,120 @@
       border-radius: 50%;
       background: var(--text-dark);
       opacity: 0;
-      transition: all var(--transition-normal);
+      transition: all 0.3s ease;
     }
 
-    .scroll-dot:hover {
+    .nav-dot:hover {
       background: rgba(23, 19, 17, 0.5);
       transform: scale(1.2);
-      border-color: var(--text-dark);
     }
 
-    .scroll-dot:hover::before {
-      opacity: 0.7;
-    }
-
-    .scroll-dot.active {
+    .nav-dot.active {
       background: var(--text-dark);
       transform: scale(1.3);
-      box-shadow: 0 0 15px rgba(23, 19, 17, 0.3);
     }
 
-    .scroll-dot.active::before {
+    .nav-dot.active::after {
       opacity: 1;
       background: var(--white);
     }
 
-    /* Hero Scroll Indicator */
-    .hero .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--white);
-      font-size: 0.9rem;
-      opacity: 0;
-      animation: fadeInOut 3s ease-in-out infinite;
+    /* ========== ANIMATIONS & ENHANCED UI ========== */
+
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    @keyframes fadeInOut {
-
-      0%,
-      100% {
+    @keyframes fadeInLeft {
+      from {
         opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes rotateIn {
+      from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0.5);
+      }
+
+      to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(50px);
       }
 
       50% {
         opacity: 1;
+        transform: scale(1.05) translateY(-10px);
       }
-    }
 
-    .scroll-arrow {
-      font-size: 1.2rem;
-      animation: bounceDown 2s ease-in-out infinite;
-    }
+      70% {
+        transform: scale(0.9) translateY(0);
+      }
 
-    @keyframes bounceDown {
-
-      0%,
       100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(10px);
+        opacity: 1;
+        transform: scale(1) translateY(0);
       }
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .header {
-        padding: 0 var(--space-lg);
-      }
-
-      .nav {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
-        text-align: center;
-      }
-
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .client-logos {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .testimonials {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-      }
-
-      /* Mobile vertical scroll */
-      .vertical-scroll {
-        width: 100%;
-      }
-
-      .section {
-        min-height: 100vh;
-        padding: var(--space-lg);
-      }
-
-      /* Hide hero scroll indicator on mobile */
-      .hero .scroll-indicator {
-        display: none;
-      }
-
-      /* Fix background attachment on mobile */
-      .hero {
-        background-attachment: scroll;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header {
-        height: 70px;
-        padding: 0 var(--space-md);
-      }
-
-      .hero-content,
-      .about-content,
-      .services-content,
-      .portfolio-content,
-      .clients-content,
-      .vision-content,
-      .footer-content {
-        padding: 0 var(--space-md);
-      }
-
-      .services-grid,
-      .portfolio-grid {
-        gap: var(--space-md);
-      }
-    }
-
-    /* Animation Classes */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .fade-in.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .scale-in {
-      opacity: 0;
-      transform: scale(0.8) rotate(-3deg);
-      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .scale-in.animate {
-      opacity: 1;
-      transform: scale(1) rotate(0deg);
-    }
-
-    .slide-left {
-      opacity: 0;
-      transform: translateX(-50px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .slide-left.animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .slide-right {
-      opacity: 0;
-      transform: translateX(50px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .slide-right.animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .bounce-in {
-      opacity: 0;
-      transform: scale(0.3) translateY(50px);
-      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-
-    .bounce-in.animate {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-
-    .rotate-in {
-      opacity: 0;
-      transform: rotate(180deg) scale(0.5);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .rotate-in.animate {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-    }
-
-    /* Enhanced Hover Effects */
-    .service-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
-      text-align: center;
-      transition: all var(--transition-normal);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(23, 19, 17, 0.1);
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transition: left 0.5s;
-    }
-
-    .service-card:hover::before {
-      left: 100%;
-    }
-
-    .service-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(23, 19, 17, 0.15);
-      background: linear-gradient(135deg, var(--white) 0%, var(--bg-beige) 100%);
-    }
-
-    .team-card:hover {
-      transform: translateY(-10px) rotateY(5deg);
-      box-shadow: 0 15px 35px rgba(23, 19, 17, 0.15);
-    }
-
-    .portfolio-item {
-      transition: all var(--transition-normal);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .portfolio-item::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, transparent 30%, rgba(23, 19, 17, 0.1) 100%);
-      opacity: 0;
-      transition: opacity var(--transition-normal);
-    }
-
-    .portfolio-item:hover::after {
-      opacity: 1;
-    }
-
-    .portfolio-item:hover {
-      transform: scale(1.03) rotateZ(1deg);
-      box-shadow: 0 20px 40px rgba(23, 19, 17, 0.2);
-    }
-
-    /* Floating Animation */
     @keyframes float {
 
       0%,
@@ -1124,11 +547,6 @@
       }
     }
 
-    .floating {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    /* Pulse Animation */
     @keyframes pulse {
       0% {
         box-shadow: 0 0 0 0 rgba(23, 19, 17, 0.4);
@@ -1143,79 +561,607 @@
       }
     }
 
-    .pulse {
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Animation Classes */
+    .animate-fade-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-left {
+      animation: fadeInLeft 0.8s ease-out forwards;
+    }
+
+    .animate-fade-right {
+      animation: fadeInRight 0.8s ease-out forwards;
+    }
+
+    .animate-scale {
+      animation: scaleIn 0.6s ease-out forwards;
+    }
+
+    .animate-slide-down {
+      animation: slideInDown 0.8s ease-out forwards;
+    }
+
+    .animate-rotate {
+      animation: rotateIn 0.8s ease-out forwards;
+    }
+
+    .animate-bounce {
+      animation: bounceIn 0.8s ease-out forwards;
+    }
+
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-pulse {
       animation: pulse 2s infinite;
     }
 
-    /* Smooth Scroll Enhancements */
-    @media (prefers-reduced-motion: no-preference) {
-      html {
-        scroll-behavior: smooth;
-        scroll-snap-type: y mandatory;
-      }
-
-      .section {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-      }
+    /* Stagger Delays */
+    .animate-delay-1 {
+      animation-delay: 0.1s;
     }
 
-    /* Performance optimizations */
-    .section {
-      will-change: transform;
-      transform: translateZ(0);
+    .animate-delay-2 {
+      animation-delay: 0.2s;
     }
 
-    .service-card,
-    .team-card,
+    .animate-delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    .animate-delay-4 {
+      animation-delay: 0.4s;
+    }
+
+    .animate-delay-5 {
+      animation-delay: 0.5s;
+    }
+
+    .animate-delay-6 {
+      animation-delay: 0.6s;
+    }
+
+    /* Enhanced Card Effects */
+    .enhanced-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .enhanced-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .enhanced-card:hover::before {
+      left: 100%;
+    }
+
+    .enhanced-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(23, 19, 17, 0.15);
+    }
+
+    /* Gradient Backgrounds */
+    .gradient-bg-1 {
+      background: linear-gradient(135deg, var(--bg-beige) 0%, var(--white) 100%);
+    }
+
+    .gradient-bg-2 {
+      background: linear-gradient(135deg, var(--white) 0%, var(--bg-beige) 100%);
+    }
+
+    .gradient-bg-animated {
+      background: linear-gradient(-45deg, var(--bg-beige), var(--white), var(--bg-beige), var(--white));
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    /* Glowing Effects */
+    .glow-effect {
+      box-shadow: 0 0 20px rgba(23, 19, 17, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .glow-effect:hover {
+      box-shadow: 0 0 30px rgba(23, 19, 17, 0.2);
+    }
+
+    /* Text Effects */
+    .text-gradient {
+      background: linear-gradient(135deg, var(--text-dark), var(--accent-grey));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-shimmer {
+      background: linear-gradient(90deg, var(--text-dark) 0%, var(--accent-grey) 50%, var(--text-dark) 100%);
+      background-size: 1000px 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    /* Enhanced Service Cards */
+    .service-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(23, 19, 17, 0.08);
+      border: 1px solid rgba(23, 19, 17, 0.05);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--text-dark), var(--accent-grey));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* Enhanced Portfolio Items */
     .portfolio-item {
-      will-change: transform;
-      transform: translateZ(0);
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      cursor: pointer;
     }
 
-    /* Parallax effect */
-    .parallax-bg {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+    .portfolio-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(23, 19, 17, 0.8), rgba(102, 102, 102, 0.8));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
     }
 
-    /* Smooth scrolling for mobile */
+    .portfolio-item:hover::before {
+      opacity: 1;
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--white);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-overlay h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .portfolio-overlay p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* New Sections Styles */
+
+    /* Team Section */
+    .section.team {
+      background: var(--gradient-bg-2);
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .team-title {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 4px solid var(--bg-beige);
+      transition: transform 0.3s ease;
+    }
+
+    .team-card:hover .team-photo {
+      transform: scale(1.1);
+    }
+
+    .team-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .team-role {
+      color: var(--accent-grey);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .team-social a {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--bg-beige);
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .team-social a:hover {
+      background: var(--text-dark);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+
+    /* Testimonials Section */
+    .section.testimonials {
+      background: var(--text-dark);
+      color: var(--white);
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .testimonials-title {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-photo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-info h4 {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .testimonial-info p {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* Stats Section */
+    .section.stats {
+      background: var(--gradient-bg-animated);
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .stats-title {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .stat-card {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-number {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      font-family: var(--font-secondary);
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--accent-grey);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: var(--text-dark);
+      color: var(--bg-beige);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+    }
+
+    .footer-info {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-info span {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-beige);
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 251, 243, 0.3);
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-      body {
-        overflow-y: auto;
+      .header {
+        padding: 0 1rem;
+        height: 70px;
       }
 
-      .vertical-scroll {
-        width: 100%;
+      .nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .main-container {
+        padding-top: 70px;
+      }
+
+      .services-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .team-grid,
+      .testimonials-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .contact-info {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .scroll-indicator {
+        right: 1rem;
+      }
+
+      /* Fix background attachment on mobile */
+      .section.hero,
+      .section.contact {
+        background-attachment: scroll;
+      }
+
+      .footer {
+        height: 80px;
+        padding: 0 1rem;
+      }
+
+      .footer-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .footer-info span {
+        font-size: 0.8rem;
+      }
+
+      .social-links {
+        gap: 0.5rem;
+      }
+
+      .social-link {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .hero-content,
+      .about-content,
+      .contact-content {
+        padding: 0 1rem;
       }
 
       .section {
-        min-height: 100vh;
+        padding: 1rem;
+      }
+
+      .services-title,
+      .portfolio-title,
+      .team-title,
+      .testimonials-title,
+      .stats-title,
+      .contact-title {
+        margin-bottom: 2rem;
+      }
+
+      .team-card,
+      .testimonial-card,
+      .stat-card {
+        padding: 1.5rem;
+      }
+
+      .scroll-indicator {
+        right: 0.5rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Loading Screen -->
-  <div class="loading-screen" id="loading">
-    <div class="loader"></div>
-  </div>
-
   <!-- Header -->
   <header class="header">
     <a href="#" class="logo">NexaCore</a>
     <nav>
       <ul class="nav">
-        <li><a href="#" class="nav-link" data-section="0">Home</a></li>
-        <li><a href="#" class="nav-link" data-section="1">About</a></li>
-        <li><a href="#" class="nav-link" data-section="2">Services</a></li>
-        <li><a href="#" class="nav-link" data-section="3">Portfolio</a></li>
-        <li><a href="#" class="nav-link" data-section="4">Clients</a></li>
-        <li><a href="#" class="nav-link" data-section="5">Vision</a></li>
-        <li><a href="#" class="nav-link" data-section="6">Contact</a></li>
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+        <li><a href="#stats" class="nav-link">Stats</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </nav>
     <div class="menu-toggle" id="menuToggle">
@@ -1225,1524 +1171,666 @@
     </div>
   </header>
 
-  <!-- Mobile Navigation -->
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="#" class="mobile-nav-link" data-section="0">Home</a>
-    <a href="#" class="mobile-nav-link" data-section="1">About</a>
-    <a href="#" class="mobile-nav-link" data-section="2">Services</a>
-    <a href="#" class="mobile-nav-link" data-section="3">Portfolio</a>
-    <a href="#" class="mobile-nav-link" data-section="4">Clients</a>
-    <a href="#" class="mobile-nav-link" data-section="5">Vision</a>
-    <a href="#" class="mobile-nav-link" data-section="6">Contact</a>
-  </nav>
+  <!-- Main Container -->
+  <div class="main-container">
 
-  <!-- Horizontal Container -->
-  <div class="vertical-container">
-    <div class="vertical-scroll" id="verticalScroll">
-
-      <!-- Hero Section -->
-      <section class="section hero">
-        <div class="hero-content">
-          <h1 class="hero-title">NexaCore Consultancy Services</h1>
-          <p class="hero-subtitle">Empowering Businesses with Expert IT Consultancy and Innovative Solutions</p>
-          <a href="#" class="cta-button" data-section="6">Consult Now</a>
+    <!-- Section 1 - Hero -->
+    <section id="hero" class="section hero">
+      <div class="hero-content">
+        <h1 class="hero-title animate-fade-up">NexaCore Consultancy Services</h1>
+        <p class="hero-subtitle animate-fade-up animate-delay-2">Empowering Businesses with Expert IT Consultancy and
+          Innovative Solutions</p>
+        <a href="#contact" class="cta-button animate-bounce animate-delay-4">Get Started</a>
+      </div>
+      <div class="hero-floating-elements">
+        <div class="floating-icon animate-float"
+          style="position: absolute; top: 20%; left: 10%; font-size: 2rem; opacity: 0.1;">
+          <i class="fas fa-laptop-code"></i>
         </div>
-        <div class="scroll-indicator">
-          <span>Scroll to explore</span>
-          <div class="scroll-arrow">↓</div>
+        <div class="floating-icon animate-float animate-delay-2"
+          style="position: absolute; top: 60%; right: 15%; font-size: 1.5rem; opacity: 0.1;">
+          <i class="fas fa-mobile-alt"></i>
         </div>
-      </section>
-
-      <!-- About Section -->
-      <section class="section about">
-        <div class="about-content">
-          <div class="about-text">
-            <h2 class="fade-in">About NexaCore</h2>
-            <p class="fade-in">NexaCore is a leading IT consultancy firm offering strategic guidance, website/app
-              development, photoshoots, and marketing. We empower businesses with innovative solutions that drive growth
-              and digital transformation.</p>
-            <p class="fade-in">Our team of experts combines technical excellence with creative vision to deliver
-              exceptional results. We believe in building long-term partnerships and providing solutions that exceed
-              expectations.</p>
-            <p class="fade-in">With years of experience across diverse industries, we understand the unique challenges
-              businesses face in today's digital landscape and provide tailored solutions for success.</p>
-          </div>
-          <div class="team-grid">
-            <div class="team-card scale-in">
-              <img
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-                alt="John Smith" class="team-photo">
-              <h4 class="team-name">John Smith</h4>
-              <p class="team-role">CEO & Founder</p>
-            </div>
-            <div class="team-card scale-in">
-              <img
-                src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-                alt="Sarah Johnson" class="team-photo">
-              <h4 class="team-name">Sarah Johnson</h4>
-              <p class="team-role">CTO</p>
-            </div>
-            <div class="team-card scale-in">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-                alt="Michael Chen" class="team-photo">
-              <h4 class="team-name">Michael Chen</h4>
-              <p class="team-role">Lead Developer</p>
-            </div>
-            <div class="team-card scale-in">
-              <img
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-                alt="Emily Davis" class="team-photo">
-              <h4 class="team-name">Emily Davis</h4>
-              <p class="team-role">Creative Director</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Services Section -->
-      <section class="section services">
-        <div class="services-content">
-          <h2 class="services-title fade-in">Our Services</h2>
-          <div class="services-grid">
-            <div class="service-card scale-in">
-              <div class="service-icon">
-                <i class="fas fa-laptop-code"></i>
-              </div>
-              <h3 class="service-title">IT Consultancy</h3>
-              <p class="service-description">Strategic IT guidance and digital transformation consulting to optimize
-                your business operations and technology infrastructure.</p>
-            </div>
-            <div class="service-card scale-in">
-              <div class="service-icon">
-                <i class="fas fa-globe"></i>
-              </div>
-              <h3 class="service-title">Website Design & Development</h3>
-              <p class="service-description">Custom website design and development services that create engaging digital
-                experiences and drive business growth.</p>
-            </div>
-            <div class="service-card scale-in">
-              <div class="service-icon">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-              <h3 class="service-title">Web & Mobile App Development</h3>
-              <p class="service-description">Innovative web and mobile applications built with cutting-edge technologies
-                to meet your specific business needs.</p>
-            </div>
-            <div class="service-card scale-in">
-              <div class="service-icon">
-                <i class="fas fa-camera"></i>
-              </div>
-              <h3 class="service-title">Product Photography</h3>
-              <p class="service-description">Professional product photography services that showcase your products in
-                the best light for marketing and e-commerce.</p>
-            </div>
-            <div class="service-card scale-in">
-              <div class="service-icon">
-                <i class="fas fa-bullhorn"></i>
-              </div>
-              <h3 class="service-title">Digital Marketing</h3>
-              <p class="service-description">Comprehensive digital marketing strategies that increase brand visibility
-                and drive customer engagement across all channels.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Portfolio Section -->
-      <section class="section portfolio">
-        <div class="portfolio-content">
-          <h2 class="portfolio-title fade-in">Our Portfolio</h2>
-          <div class="portfolio-grid">
-            <div class="portfolio-item scale-in" onclick="openModal('modal1')">
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="IT Consultancy for Startup" class="portfolio-image">
-              <div class="portfolio-info">
-                <h4 class="portfolio-project-title">IT Consultancy for Tech Startup</h4>
-                <p class="portfolio-description">Strategic IT planning and infrastructure setup for a growing fintech
-                  company.</p>
-              </div>
-            </div>
-            <div class="portfolio-item scale-in" onclick="openModal('modal2')">
-              <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="E-commerce Website" class="portfolio-image">
-              <div class="portfolio-info">
-                <h4 class="portfolio-project-title">E-commerce Platform Development</h4>
-                <p class="portfolio-description">Custom e-commerce solution with integrated payment processing and
-                  inventory management.</p>
-              </div>
-            </div>
-            <div class="portfolio-item scale-in" onclick="openModal('modal3')">
-              <img
-                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Mobile App" class="portfolio-image">
-              <div class="portfolio-info">
-                <h4 class="portfolio-project-title">Healthcare Mobile App</h4>
-                <p class="portfolio-description">Cross-platform mobile application for patient management and
-                  telemedicine.</p>
-              </div>
-            </div>
-            <div class="portfolio-item scale-in" onclick="openModal('modal4')">
-              <img
-                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Product Photography" class="portfolio-image">
-              <div class="portfolio-info">
-                <h4 class="portfolio-project-title">Product Photography Campaign</h4>
-                <p class="portfolio-description">Professional product photography for luxury fashion brand's online
-                  catalog.</p>
-              </div>
-            </div>
-            <div class="portfolio-item scale-in" onclick="openModal('modal5')">
-              <img
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Corporate Website" class="portfolio-image">
-              <div class="portfolio-info">
-                <h4 class="portfolio-project-title">Corporate Website Redesign</h4>
-                <p class="portfolio-description">Complete website overhaul for a Fortune 500 manufacturing company.</p>
-              </div>
-            </div>
-            <div class="portfolio-item scale-in" onclick="openModal('modal6')">
-              <img
-                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Marketing Campaign" class="portfolio-image">
-              <div class="portfolio-info">
-                <h4 class="portfolio-project-title">Digital Marketing Campaign</h4>
-                <p class="portfolio-description">Multi-channel digital marketing strategy that increased client ROI by
-                  300%.</p>
-              </div>
-            </div>
-            <div class="portfolio-item scale-in" onclick="openModal('modal7')">
-              <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Web Application" class="portfolio-image">
-              <div class="portfolio-info">
-                <h4 class="portfolio-project-title">Enterprise Web Application</h4>
-                <p class="portfolio-description">Custom CRM system for sales team management and customer relationship
-                  tracking.</p>
-              </div>
-            </div>
-            <div class="portfolio-item scale-in" onclick="openModal('modal8')">
-              <img
-                src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="AI Solution" class="portfolio-image">
-              <div class="portfolio-info">
-                <h4 class="portfolio-project-title">AI-Powered Analytics Platform</h4>
-                <p class="portfolio-description">Machine learning solution for predictive analytics and business
-                  intelligence.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Clients Section -->
-      <section class="section clients">
-        <div class="clients-content">
-          <h2 class="clients-title fade-in">Our Clients</h2>
-          <div class="client-logos">
-            <img
-              src="https://images.unsplash.com/photo-1567016432779-094069958ea5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-              alt="TechCorp Logo" class="client-logo">
-            <img
-              src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-              alt="InnovateCo Logo" class="client-logo">
-            <img
-              src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-              alt="FutureTech Logo" class="client-logo">
-            <img
-              src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-              alt="GlobalSoft Logo" class="client-logo">
-            <img
-              src="https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-              alt="DataFlow Logo" class="client-logo">
-            <img
-              src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-              alt="CloudTech Logo" class="client-logo">
-          </div>
-          <div class="testimonials">
-            <div class="testimonial fade-in">
-              <p class="testimonial-text">"NexaCore transformed our entire IT infrastructure. Their strategic approach
-                and expert guidance helped us scale efficiently while reducing costs by 40%."</p>
-              <h4 class="testimonial-author">Jennifer Rodriguez</h4>
-              <p class="testimonial-company">CEO, TechCorp Solutions</p>
-            </div>
-            <div class="testimonial fade-in">
-              <p class="testimonial-text">"The website they developed for us exceeded all expectations. User engagement
-                increased by 250% and our online sales tripled within six months."</p>
-              <h4 class="testimonial-author">David Kim</h4>
-              <p class="testimonial-company">Marketing Director, InnovateCo</p>
-            </div>
-            <div class="testimonial fade-in">
-              <p class="testimonial-text">"Professional, reliable, and innovative. NexaCore's mobile app development
-                expertise helped us launch our product ahead of schedule and under budget."</p>
-              <h4 class="testimonial-author">Lisa Thompson</h4>
-              <p class="testimonial-company">CTO, FutureTech Industries</p>
-            </div>
-            <div class="testimonial fade-in">
-              <p class="testimonial-text">"Their product photography and marketing services gave our brand a complete
-                makeover. We've seen a 180% increase in brand recognition and customer acquisition."</p>
-              <h4 class="testimonial-author">Mark Anderson</h4>
-              <p class="testimonial-company">Brand Manager, GlobalSoft</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Vision Section -->
-      <section class="section vision">
-        <div class="vision-content">
-          <h2 class="vision-title fade-in">Our Vision</h2>
-          <p class="vision-text fade-in">To be the leading catalyst for digital transformation, empowering businesses
-            worldwide to harness the full potential of technology. We envision a future where innovation drives growth,
-            creativity fuels success, and technology bridges the gap between ambition and achievement.</p>
-        </div>
-      </section>
-
-      <!-- Footer/Contact Section -->
-      <section class="section footer">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>Company Info</h3>
-            <p>NexaCore Consultancy Services</p>
-            <p>Leading IT Solutions Provider</p>
-            <p>Est. 2018</p>
-          </div>
-          <div class="footer-section">
-            <h3>Quick Links</h3>
-            <p><a href="#" data-section="1">About Us</a></p>
-            <p><a href="#" data-section="2">Services</a></p>
-            <p><a href="#" data-section="3">Portfolio</a></p>
-            <p><a href="#" data-section="4">Clients</a></p>
-          </div>
-          <div class="footer-section">
-            <h3>Contact Info</h3>
-            <p>Email: hello@nexacore.com</p>
-            <p>Phone: +1 (555) 123-4567</p>
-            <p>Address: 123 Tech Street, Silicon Valley, CA 94025</p>
-          </div>
-          <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-              <a href="#" class="social-link" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#" class="social-link" aria-label="Twitter">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-link" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="social-link" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="copyright">
-          <p>&copy; 2024 NexaCore Consultancy Services. All rights reserved.</p>
-        </div>
-      </section>
-
-    </div>
-  </div>
-
-  <!-- Scroll Indicator -->
-  <div class="scroll-indicator">
-    <div class="scroll-dot active" data-section="0"></div>
-    <div class="scroll-dot" data-section="1"></div>
-    <div class="scroll-dot" data-section="2"></div>
-    <div class="scroll-dot" data-section="3"></div>
-    <div class="scroll-dot" data-section="4"></div>
-    <div class="scroll-dot" data-section="5"></div>
-    <div class="scroll-dot" data-section="6"></div>
-  </div>
-
-  <!-- Modals for Portfolio -->
-  <div class="modal" id="modal1">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
-      <h3>IT Consultancy for Tech Startup</h3>
-      <img
-        src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="IT Consultancy Project" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-      <p>We provided comprehensive IT strategy and infrastructure setup for a rapidly growing fintech startup. Our
-        solutions included cloud architecture design, security implementation, and scalable development frameworks that
-        supported their growth from 10 to 100+ employees.</p>
-      <p><strong>Technologies:</strong> AWS, Docker, Kubernetes, React, Node.js</p>
-      <p><strong>Duration:</strong> 6 months</p>
-      <p><strong>Result:</strong> 99.9% uptime, 50% cost reduction, successful Series A funding</p>
-    </div>
-  </div>
-
-  <div class="modal" id="modal2">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
-      <h3>E-commerce Platform Development</h3>
-      <img
-        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="E-commerce Platform" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-      <p>Custom e-commerce solution with advanced features including real-time inventory management, integrated payment
-        processing, and AI-powered product recommendations.</p>
-      <p><strong>Technologies:</strong> React, Next.js, Stripe, PostgreSQL, Redis</p>
-      <p><strong>Duration:</strong> 4 months</p>
-      <p><strong>Result:</strong> 300% increase in online sales, 25% higher conversion rate</p>
-    </div>
-  </div>
-
-  <div class="modal" id="modal3">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
-      <h3>Healthcare Mobile App</h3>
-      <img
-        src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="Healthcare Mobile App" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-      <p>Cross-platform mobile application for telemedicine and patient management, featuring video consultations,
-        appointment scheduling, and secure medical record storage.</p>
-      <p><strong>Technologies:</strong> React Native, Firebase, WebRTC, HIPAA Compliance</p>
-      <p><strong>Duration:</strong> 8 months</p>
-      <p><strong>Result:</strong> 10,000+ active users, 95% user satisfaction rating</p>
-    </div>
-  </div>
-
-  <div class="modal" id="modal4">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
-      <h3>Product Photography Campaign</h3>
-      <img
-        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="Product Photography" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-      <p>Comprehensive product photography and visual content creation for a luxury fashion brand's complete catalog and
-        marketing campaigns.</p>
-      <p><strong>Deliverables:</strong> 500+ product photos, lifestyle shots, social media content</p>
-      <p><strong>Duration:</strong> 3 months</p>
-      <p><strong>Result:</strong> 200% increase in online engagement, 150% boost in sales</p>
-    </div>
-  </div>
-
-  <div class="modal" id="modal5">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal5')">&times;</button>
-      <h3>Corporate Website Redesign</h3>
-      <img
-        src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="Corporate Website" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-      <p>Complete website overhaul for a Fortune 500 manufacturing company, including responsive design, CMS
-        implementation, and SEO optimization.</p>
-      <p><strong>Technologies:</strong> WordPress, PHP, MySQL, SEO optimization</p>
-      <p><strong>Duration:</strong> 5 months</p>
-      <p><strong>Result:</strong> 400% increase in organic traffic, 60% faster page load times</p>
-    </div>
-  </div>
-
-  <div class="modal" id="modal6">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal6')">&times;</button>
-      <h3>Digital Marketing Campaign</h3>
-      <img
-        src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="Marketing Campaign" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-      <p>Multi-channel digital marketing strategy including social media management, content creation, PPC advertising,
-        and email marketing automation.</p>
-      <p><strong>Channels:</strong> Google Ads, Facebook, Instagram, LinkedIn, Email</p>
-      <p><strong>Duration:</strong> 12 months ongoing</p>
-      <p><strong>Result:</strong> 300% ROI increase, 500% growth in lead generation</p>
-    </div>
-  </div>
-
-  <div class="modal" id="modal7">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal7')">&times;</button>
-      <h3>Enterprise Web Application</h3>
-      <img
-        src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="Web Application" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-      <p>Custom CRM system for sales team management, customer relationship tracking, and automated workflow processes.
-      </p>
-      <p><strong>Technologies:</strong> Angular, .NET Core, SQL Server, Azure</p>
-      <p><strong>Duration:</strong> 10 months</p>
-      <p><strong>Result:</strong> 40% increase in sales productivity, 90% reduction in manual tasks</p>
-    </div>
-  </div>
-
-  <div class="modal" id="modal8">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal8')">&times;</button>
-      <h3>AI-Powered Analytics Platform</h3>
-      <img
-        src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="AI Platform" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-      <p>Machine learning solution for predictive analytics and business intelligence with real-time data processing and
-        automated insights generation.</p>
-      <p><strong>Technologies:</strong> Python, TensorFlow, Apache Spark, MongoDB</p>
-      <p><strong>Duration:</strong> 12 months</p>
-      <p><strong>Result:</strong> 85% accuracy in predictions, $2M cost savings annually</p>
-    </div>
-  </div>
-  </div>
-  </div>
-
-  <!-- Team Grid -->
-  <div class="team-grid">
-    <div class="team-card scale-in">
-      <img
-        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-        alt="John Doe - IT Consultant" class="team-avatar">
-      <h3 class="team-name">John Doe</h3>
-      <p class="team-role">Senior IT Consultant</p>
-    </div>
-
-    <div class="team-card scale-in">
-      <img
-        src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-        alt="Jane Smith - App Developer" class="team-avatar">
-      <h3 class="team-name">Jane Smith</h3>
-      <p class="team-role">Lead App Developer</p>
-    </div>
-
-    <div class="team-card scale-in">
-      <img
-        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-        alt="Alex Johnson - Web Designer" class="team-avatar">
-      <h3 class="team-name">Alex Johnson</h3>
-      <p class="team-role">Creative Web Designer</p>
-    </div>
-
-    <div class="team-card scale-in">
-      <img
-        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-        alt="Emily Davis - Marketing Specialist" class="team-avatar">
-      <h3 class="team-name">Emily Davis</h3>
-      <p class="team-role">Digital Marketing Specialist</p>
-    </div>
-  </div>
-  </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="section bg-primary">
-    <div class="container">
-      <h2 class="section-title fade-in">Our Comprehensive Services</h2>
-
-      <div class="services-grid">
-        <div class="service-card fade-in">
-          <div class="service-icon">
-            <i class="fas fa-lightbulb" aria-hidden="true"></i>
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="IT Consultancy Services" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">IT Consultancy</h3>
-            <p class="service-description">Expert advice on digital strategy, system integration, and technology
-              optimization to drive business growth. We analyze your current infrastructure and recommend solutions that
-              align with your business objectives.</p>
-          </div>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-icon">
-            <i class="fas fa-code" aria-hidden="true"></i>
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Website Design and Development" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Website Design & Development</h3>
-            <p class="service-description">Crafting responsive, user-friendly websites tailored to your brand. From
-              e-commerce platforms to corporate sites, we build digital experiences that convert visitors into
-              customers.</p>
-          </div>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-icon">
-            <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Mobile App Development" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Web & Mobile App Development</h3>
-            <p class="service-description">Building scalable applications for iOS, Android, and web platforms using
-              modern tech stacks like React, Flutter, and Node.js to deliver exceptional user experiences.</p>
-          </div>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-icon">
-            <i class="fas fa-camera" aria-hidden="true"></i>
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Professional Product Photography" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Product Photography</h3>
-            <p class="service-description">High-quality professional photoshoots that showcase your products in the best
-              light. Perfect for e-commerce, marketing campaigns, and brand storytelling.</p>
-          </div>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-icon">
-            <i class="fas fa-chart-line" aria-hidden="true"></i>
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Digital Marketing Services" class="service-image">
-          <div class="service-content">
-            <h3 class="service-title">Digital Marketing</h3>
-            <p class="service-description">Comprehensive digital marketing services including SEO, social media
-              management, content strategy, and paid advertising to boost your online presence and drive results.</p>
-          </div>
+        <div class="floating-icon animate-float animate-delay-4"
+          style="position: absolute; bottom: 30%; left: 20%; font-size: 1.8rem; opacity: 0.1;">
+          <i class="fas fa-globe"></i>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="section bg-white">
-    <div class="container">
-      <h2 class="section-title fade-in">Our Portfolio</h2>
+    <!-- Section 2 - About -->
+    <section id="about" class="section about gradient-bg-1">
+      <div class="about-content">
+        <h2 class="animate-fade-up text-gradient">About NexaCore</h2>
+        <p class="animate-fade-up animate-delay-1">NexaCore is a leading IT consultancy firm offering strategic
+          guidance, website/app development, photoshoots, and marketing. We empower businesses with innovative solutions
+          that drive growth and digital transformation.</p>
+        <p class="animate-fade-up animate-delay-2">Our team of experts combines technical excellence with creative
+          vision to deliver exceptional results. We believe in building long-term partnerships and providing solutions
+          that exceed expectations.</p>
+        <p class="animate-fade-up animate-delay-3">With years of experience across diverse industries, we understand the
+          unique challenges businesses face in today's digital landscape and provide tailored solutions for success.</p>
+      </div>
+    </section>
 
+    <!-- Section 3 - Services -->
+    <section id="services" class="section services">
+      <h2 class="services-title animate-fade-up text-shimmer">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card enhanced-card glow-effect animate-scale animate-delay-1">
+          <div class="service-icon animate-rotate">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3 class="service-title">IT Consultancy</h3>
+          <p class="service-description">Strategic IT guidance and digital transformation consulting to optimize your
+            business operations.</p>
+        </div>
+        <div class="service-card enhanced-card glow-effect animate-scale animate-delay-2">
+          <div class="service-icon animate-rotate">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3 class="service-title">Web Development</h3>
+          <p class="service-description">Custom website design and development services that create engaging digital
+            experiences.</p>
+        </div>
+        <div class="service-card enhanced-card glow-effect animate-scale animate-delay-3">
+          <div class="service-icon animate-rotate">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="service-title">App Development</h3>
+          <p class="service-description">Innovative mobile applications built with cutting-edge technologies for your
+            business needs.</p>
+        </div>
+        <div class="service-card enhanced-card glow-effect animate-scale animate-delay-4">
+          <div class="service-icon animate-rotate">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3 class="service-title">Photography</h3>
+          <p class="service-description">Professional product photography services that showcase your products
+            perfectly.</p>
+        </div>
+        <div class="service-card enhanced-card glow-effect animate-scale animate-delay-5">
+          <div class="service-icon animate-rotate">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="service-title">Digital Marketing</h3>
+          <p class="service-description">Comprehensive digital marketing strategies to boost your online presence and
+            drive growth.</p>
+        </div>
+        <div class="service-card enhanced-card glow-effect animate-scale animate-delay-6">
+          <div class="service-icon animate-rotate">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="service-title">Cybersecurity</h3>
+          <p class="service-description">Robust security solutions to protect your business from digital threats and
+            ensure data safety.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 - Portfolio -->
+    <section id="portfolio" class="section portfolio gradient-bg-2">
+      <h2 class="portfolio-title animate-fade-up text-gradient">Our Work</h2>
       <div class="portfolio-grid">
-        <div class="portfolio-item fade-in" onclick="openModal('modal1')" role="button" tabindex="0"
-          onkeypress="handleKeyPress(event, 'modal1')" aria-label="View E-Commerce Website project details">
+        <div class="portfolio-item enhanced-card animate-fade-left animate-delay-1">
           <img
-            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="E-Commerce Website for Retail Client" class="portfolio-image">
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Project 1" class="portfolio-image">
           <div class="portfolio-overlay">
-            <h3 class="portfolio-title">E-Commerce Website for Retail Client</h3>
-            <p class="portfolio-description">Developed a fully responsive e-commerce platform with integrated payment
-              gateways and inventory management.</p>
+            <h4>IT Consultancy Project</h4>
+            <p>Strategic IT planning and infrastructure setup</p>
+          </div>
+          <div class="portfolio-info">
+            <h4 class="portfolio-project-title">IT Consultancy Project</h4>
+            <p class="portfolio-description">Strategic IT planning and infrastructure setup for a growing fintech
+              company.</p>
           </div>
         </div>
-
-        <div class="portfolio-item fade-in" onclick="openModal('modal2')" role="button" tabindex="0"
-          onkeypress="handleKeyPress(event, 'modal2')" aria-label="View Fitness App project details">
+        <div class="portfolio-item enhanced-card animate-fade-up animate-delay-2">
           <img
-            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Mobile App for Fitness Brand" class="portfolio-image">
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Project 2" class="portfolio-image">
           <div class="portfolio-overlay">
-            <h3 class="portfolio-title">Mobile App for Fitness Brand</h3>
-            <p class="portfolio-description">Created a cross-platform fitness app with workout tracking and social
-              features.</p>
+            <h4>E-commerce Platform</h4>
+            <p>Custom solution with payment processing</p>
+          </div>
+          <div class="portfolio-info">
+            <h4 class="portfolio-project-title">E-commerce Platform</h4>
+            <p class="portfolio-description">Custom e-commerce solution with integrated payment processing and inventory
+              management.</p>
           </div>
         </div>
-
-        <div class="portfolio-item fade-in" onclick="openModal('modal3')" role="button" tabindex="0"
-          onkeypress="handleKeyPress(event, 'modal3')" aria-label="View IT Consultancy project details">
+        <div class="portfolio-item enhanced-card animate-fade-right animate-delay-3">
           <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="IT Consultancy for Startup" class="portfolio-image">
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Project 3" class="portfolio-image">
           <div class="portfolio-overlay">
-            <h3 class="portfolio-title">IT Consultancy for Startup</h3>
-            <p class="portfolio-description">Provided strategic consultancy leading to 30% efficiency gains and cost
-              optimization.</p>
+            <h4>Mobile Application</h4>
+            <p>Cross-platform healthcare solution</p>
           </div>
-        </div>
-
-        <div class="portfolio-item fade-in" onclick="openModal('modal4')" role="button" tabindex="0"
-          onkeypress="handleKeyPress(event, 'modal4')" aria-label="View Fashion Photoshoot project details">
-          <img
-            src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Product Photoshoot for Fashion Line" class="portfolio-image">
-          <div class="portfolio-overlay">
-            <h3 class="portfolio-title">Product Photoshoot for Fashion Line</h3>
-            <p class="portfolio-description">Professional photography that increased brand engagement by 200%.</p>
-          </div>
-        </div>
-
-        <div class="portfolio-item fade-in" onclick="openModal('modal5')" role="button" tabindex="0"
-          onkeypress="handleKeyPress(event, 'modal5')" aria-label="View Corporate Website project details">
-          <img
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Corporate Website Redesign" class="portfolio-image">
-          <div class="portfolio-overlay">
-            <h3 class="portfolio-title">Corporate Website Redesign</h3>
-            <p class="portfolio-description">Modernized UI/UX achieving 60% faster loading times and improved user
-              engagement.</p>
-          </div>
-        </div>
-
-        <div class="portfolio-item fade-in" onclick="openModal('modal6')" role="button" tabindex="0"
-          onkeypress="handleKeyPress(event, 'modal6')" aria-label="View Social Media Campaign project details">
-          <img
-            src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Social Media Marketing Campaign" class="portfolio-image">
-          <div class="portfolio-overlay">
-            <h3 class="portfolio-title">Social Media Marketing Campaign</h3>
-            <p class="portfolio-description">Comprehensive campaign that boosted brand visibility and follower
-              engagement.</p>
-          </div>
-        </div>
-
-        <div class="portfolio-item fade-in" onclick="openModal('modal7')" role="button" tabindex="0"
-          onkeypress="handleKeyPress(event, 'modal7')" aria-label="View Logistics App project details">
-          <img
-            src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Custom Web App for Logistics" class="portfolio-image">
-          <div class="portfolio-overlay">
-            <h3 class="portfolio-title">Custom Web App for Logistics</h3>
-            <p class="portfolio-description">Real-time tracking dashboard that reduced operational costs by 25%.</p>
-          </div>
-        </div>
-
-        <div class="portfolio-item fade-in" onclick="openModal('modal8')" role="button" tabindex="0"
-          onkeypress="handleKeyPress(event, 'modal8')" aria-label="View Digital Transformation project details">
-          <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            alt="Consultancy on Digital Transformation" class="portfolio-image">
-          <div class="portfolio-overlay">
-            <h3 class="portfolio-title">Digital Transformation Consultancy</h3>
-            <p class="portfolio-description">Led comprehensive cloud migration with 50% reduction in manual processes.
+          <div class="portfolio-info">
+            <h4 class="portfolio-project-title">Mobile Application</h4>
+            <p class="portfolio-description">Cross-platform mobile application for patient management and telemedicine.
             </p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Modals -->
-  <div id="modal1" class="modal" role="dialog" aria-labelledby="modal1-title" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal1')" aria-label="Close modal">&times;</button>
-      <h2 id="modal1-title" class="modal-title">E-Commerce Website for Retail Client</h2>
-      <img
-        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-        alt="E-Commerce Website interface showing product catalog and checkout process" class="modal-image">
-      <p class="modal-text">We developed a comprehensive e-commerce platform featuring responsive design, secure payment
-        gateways, advanced inventory management, and customer analytics. The platform includes features like wishlist
-        functionality, product reviews, advanced search filters, and mobile-optimized checkout. Our solution increased
-        online sales by 150% within the first quarter and improved user engagement metrics significantly.</p>
-    </div>
-  </div>
-
-  <div id="modal2" class="modal" role="dialog" aria-labelledby="modal2-title" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal2')" aria-label="Close modal">&times;</button>
-      <h2 id="modal2-title" class="modal-title">Mobile App for Fitness Brand</h2>
-      <img
-        src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-        alt="Fitness mobile app showing workout tracking and social features" class="modal-image">
-      <p class="modal-text">Created a cross-platform fitness application with comprehensive workout tracking, nutrition
-        planning, social features, and personalized coaching. The app includes features like exercise video tutorials,
-        progress tracking, community challenges, and integration with wearable devices. The app garnered 50,000+
-        downloads in its first month and maintains a 4.8-star rating across app stores.</p>
-    </div>
-  </div>
-
-  <div id="modal3" class="modal" role="dialog" aria-labelledby="modal3-title" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal3')" aria-label="Close modal">&times;</button>
-      <h2 id="modal3-title" class="modal-title">IT Consultancy for Growing Startup</h2>
-      <img
-        src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-        alt="Business meeting discussing IT strategy and digital transformation" class="modal-image">
-      <p class="modal-text">Provided comprehensive IT strategy consulting for a rapidly growing startup, including
-        infrastructure optimization, security implementation, scalability planning, and team training. Our
-        recommendations included cloud migration strategy, automated deployment pipelines, and security best practices.
-        Results included 30% efficiency gains, 40% cost reduction, and improved system reliability.</p>
-    </div>
-  </div>
-
-  <div id="modal4" class="modal" role="dialog" aria-labelledby="modal4-title" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal4')" aria-label="Close modal">&times;</button>
-      <h2 id="modal4-title" class="modal-title">Product Photoshoot for Fashion Line</h2>
-      <img
-        src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-        alt="Professional fashion photography showcasing clothing line in studio setting" class="modal-image">
-      <p class="modal-text">Executed professional product photography for a fashion brand's new collection, including
-        studio setup, professional lighting, styling coordination, and post-processing. The comprehensive shoot covered
-        lifestyle photos, product details, and marketing campaign visuals. The images were used across all marketing
-        channels and resulted in a 200% increase in social media engagement and higher conversion rates.</p>
-    </div>
-  </div>
-
-  <div id="modal5" class="modal" role="dialog" aria-labelledby="modal5-title" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal5')" aria-label="Close modal">&times;</button>
-      <h2 id="modal5-title" class="modal-title">Corporate Website Redesign</h2>
-      <img
-        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-        alt="Modern corporate website design showing clean layout and professional branding" class="modal-image">
-      <p class="modal-text">Completely redesigned and developed a corporate website with modern UI/UX principles,
-        improved performance optimization, and enhanced user experience. The project included brand identity refresh,
-        content strategy, SEO optimization, and mobile-first design. The new site achieved 60% faster loading times, 80%
-        increase in user engagement, and significantly improved search engine rankings.</p>
-    </div>
-  </div>
-
-  <div id="modal6" class="modal" role="dialog" aria-labelledby="modal6-title" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal6')" aria-label="Close modal">&times;</button>
-      <h2 id="modal6-title" class="modal-title">Social Media Marketing Campaign</h2>
-      <img
-        src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-        alt="Social media marketing analytics dashboard showing campaign performance" class="modal-image">
-      <p class="modal-text">Designed and executed a comprehensive social media marketing campaign across multiple
-        platforms, including content creation, community management, influencer partnerships, and paid advertising
-        strategies. The campaign featured engaging visual content, interactive polls, user-generated content
-        initiatives, and targeted ad campaigns. Results included 300% increase in followers, 250% boost in engagement,
-        and significant ROI improvement.</p>
-    </div>
-  </div>
-
-  <div id="modal7" class="modal" role="dialog" aria-labelledby="modal7-title" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal7')" aria-label="Close modal">&times;</button>
-      <h2 id="modal7-title" class="modal-title">Custom Web App for Logistics</h2>
-      <img
-        src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-        alt="Logistics management dashboard showing real-time tracking and analytics" class="modal-image">
-      <p class="modal-text">Developed a custom web application for logistics management featuring real-time tracking,
-        route optimization, automated reporting, and predictive analytics. The solution includes GPS integration,
-        automated notifications, performance dashboards, and mobile compatibility. The application reduced operational
-        costs by 25%, improved delivery accuracy by 95%, and enhanced customer satisfaction significantly.</p>
-    </div>
-  </div>
-
-  <div id="modal8" class="modal" role="dialog" aria-labelledby="modal8-title" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal8')" aria-label="Close modal">&times;</button>
-      <h2 id="modal8-title" class="modal-title">Digital Transformation Consultancy</h2>
-      <img
-        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-        alt="Digital transformation meeting with cloud architecture diagrams and strategy planning" class="modal-image">
-      <p class="modal-text">Led a comprehensive digital transformation initiative including cloud migration strategy,
-        process automation, digital workflow implementation, and staff training programs. The project encompassed
-        infrastructure assessment, security auditing, scalability planning, and change management. The transformation
-        resulted in 50% reduction in manual processes, significant cost savings, improved data security, and enhanced
-        operational efficiency.</p>
-    </div>
-  </div>
-
-  <!-- Clients Section -->
-  <section id="clients" class="section bg-primary">
-    <div class="container">
-      <h2 class="section-title fade-in">Our Valued Clients</h2>
-
-      <div class="clients-carousel">
-        <div class="client-logos fade-in">
+        <div class="portfolio-item enhanced-card animate-fade-left animate-delay-4">
           <img
-            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-            alt="TechCorp - Leading Technology Company" class="client-logo">
+            src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Project 4" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h4>Enterprise CRM</h4>
+            <p>Custom customer relationship management</p>
+          </div>
+          <div class="portfolio-info">
+            <h4 class="portfolio-project-title">Enterprise CRM</h4>
+            <p class="portfolio-description">Comprehensive CRM system for sales management and customer tracking.</p>
+          </div>
+        </div>
+        <div class="portfolio-item enhanced-card animate-fade-up animate-delay-5">
           <img
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-            alt="InnovateX - Innovation Solutions" class="client-logo">
+            src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Project 5" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h4>AI Analytics Platform</h4>
+            <p>Machine learning business intelligence</p>
+          </div>
+          <div class="portfolio-info">
+            <h4 class="portfolio-project-title">AI Analytics Platform</h4>
+            <p class="portfolio-description">Advanced analytics platform with machine learning capabilities.</p>
+          </div>
+        </div>
+        <div class="portfolio-item enhanced-card animate-fade-right animate-delay-6">
           <img
-            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-            alt="FitLife - Health and Wellness Brand" class="client-logo">
-          <img
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-            alt="FashionHub - Premium Fashion Retailer" class="client-logo">
-          <img
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-            alt="StartupX - Emerging Business Solutions" class="client-logo">
-          <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-            alt="GlobalTech - International Technology Services" class="client-logo">
+            src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Project 6" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h4>Corporate Website</h4>
+            <p>Professional business presence</p>
+          </div>
+          <div class="portfolio-info">
+            <h4 class="portfolio-project-title">Corporate Website</h4>
+            <p class="portfolio-description">Modern corporate website with responsive design and CMS integration.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="testimonials">
-        <div class="testimonial fade-in">
-          <blockquote class="testimonial-text">"NexaCore's consultancy completely transformed our IT infrastructure.
-            Their strategic approach and technical expertise helped us modernize our systems while reducing costs. The
-            team's professionalism and dedication exceeded our expectations."</blockquote>
-          <div class="testimonial-author">Mike Ross, CEO - TechCorp</div>
+    <!-- Section 5 - Team -->
+    <section id="team" class="section team">
+      <h2 class="team-title animate-fade-up text-gradient">Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card enhanced-card animate-scale animate-delay-1">
+          <img
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+            alt="John Smith" class="team-photo">
+          <h4 class="team-name">John Smith</h4>
+          <p class="team-role">CEO & Founder</p>
+          <div class="team-social">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
         </div>
-
-        <div class="testimonial fade-in">
-          <blockquote class="testimonial-text">"Outstanding app development service! The fitness app they created for us
-            has become incredibly popular with our users. The attention to detail and user experience design is
-            exceptional. Highly recommend their services."</blockquote>
-          <div class="testimonial-author">Sarah Lee, Founder - FitLife</div>
+        <div class="team-card enhanced-card animate-scale animate-delay-2">
+          <img
+            src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+            alt="Sarah Johnson" class="team-photo">
+          <h4 class="team-name">Sarah Johnson</h4>
+          <p class="team-role">CTO & Co-founder</p>
+          <div class="team-social">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
         </div>
-
-        <div class="testimonial fade-in">
-          <blockquote class="testimonial-text">"The professional photoshoot elevated our entire product line. The
-            quality of images and creative direction was beyond what we imagined. Our marketing campaigns have never
-            looked better, and sales have increased significantly."</blockquote>
-          <div class="testimonial-author">Tom Hale, Marketing Director - FashionHub</div>
+        <div class="team-card enhanced-card animate-scale animate-delay-3">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+            alt="Michael Chen" class="team-photo">
+          <h4 class="team-name">Michael Chen</h4>
+          <p class="team-role">Lead Developer</p>
+          <div class="team-social">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
         </div>
-
-        <div class="testimonial fade-in">
-          <blockquote class="testimonial-text">"NexaCore's marketing strategies drove incredible growth for our startup.
-            Their data-driven approach and creative campaigns helped us reach our target audience effectively. The ROI
-            on our marketing investment has been phenomenal."</blockquote>
-          <div class="testimonial-author">Lisa Green, Owner - StartupX</div>
+        <div class="team-card enhanced-card animate-scale animate-delay-4">
+          <img
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+            alt="Emily Davis" class="team-photo">
+          <h4 class="team-name">Emily Davis</h4>
+          <p class="team-role">Creative Director</p>
+          <div class="team-social">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Vision Section -->
-  <section id="vision" class="section vision">
-    <div class="vision-background"></div>
-    <div class="container">
-      <div class="vision-content">
-        <h2 class="section-title fade-in">Our Vision for the Future</h2>
-        <p class="vision-text fade-in">At NexaCore, our vision is to be the premier IT consultancy partner,
-          revolutionizing businesses through innovative website and app development, stunning product photography, and
-          data-driven marketing strategies. We aim to empower global enterprises with cutting-edge technology solutions
-          that foster sustainable growth, competitive advantage, and digital excellence. Our commitment extends beyond
-          project delivery – we strive to build lasting partnerships that transform industries and shape the future of
-          business technology.</p>
+    <!-- Section 6 - Testimonials -->
+    <section id="testimonials" class="section testimonials">
+      <h2 class="testimonials-title animate-fade-up">What Our Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card enhanced-card animate-fade-left animate-delay-1">
+          <p class="testimonial-text">"NexaCore transformed our entire IT infrastructure. Their strategic approach and
+            expert guidance helped us scale efficiently while reducing costs by 40%."</p>
+          <div class="testimonial-author">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+              alt="Jennifer Rodriguez" class="testimonial-photo">
+            <div class="testimonial-info">
+              <h4>Jennifer Rodriguez</h4>
+              <p>CEO, TechCorp Solutions</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card enhanced-card animate-fade-up animate-delay-2">
+          <p class="testimonial-text">"The website they developed for us exceeded all expectations. User engagement
+            increased by 250% and our online sales tripled within six months."</p>
+          <div class="testimonial-author">
+            <img
+              src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+              alt="David Kim" class="testimonial-photo">
+            <div class="testimonial-info">
+              <h4>David Kim</h4>
+              <p>Marketing Director, InnovateCo</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card enhanced-card animate-fade-right animate-delay-3">
+          <p class="testimonial-text">"Professional, reliable, and innovative. NexaCore's mobile app development
+            expertise helped us launch our product ahead of schedule and under budget."</p>
+          <div class="testimonial-author">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+              alt="Lisa Thompson" class="testimonial-photo">
+            <div class="testimonial-info">
+              <h4>Lisa Thompson</h4>
+              <p>CTO, FutureTech Industries</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Section 7 - Stats -->
+    <section id="stats" class="section stats">
+      <h2 class="stats-title animate-fade-up text-shimmer">Our Impact</h2>
+      <div class="stats-grid">
+        <div class="stat-card enhanced-card animate-bounce animate-delay-1">
+          <div class="stat-number" data-count="150">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card enhanced-card animate-bounce animate-delay-2">
+          <div class="stat-number" data-count="95">0</div>
+          <div class="stat-label">Client Satisfaction %</div>
+        </div>
+        <div class="stat-card enhanced-card animate-bounce animate-delay-3">
+          <div class="stat-number" data-count="24">0</div>
+          <div class="stat-label">Team Members</div>
+        </div>
+        <div class="stat-card enhanced-card animate-bounce animate-delay-4">
+          <div class="stat-number" data-count="7">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8 - Contact -->
+    <section id="contact" class="section contact">
+      <div class="contact-content">
+        <h2 class="contact-title animate-fade-up">Get In Touch</h2>
+        <p class="contact-text animate-fade-up animate-delay-1">Ready to transform your business with innovative IT
+          solutions? Let's discuss your project and create something amazing together.</p>
+        <div class="contact-info">
+          <div class="contact-item animate-fade-left animate-delay-2">
+            <i class="fas fa-envelope"></i>
+            <p>hello@nexacore.com</p>
+          </div>
+          <div class="contact-item animate-fade-up animate-delay-3">
+            <i class="fas fa-phone"></i>
+            <p>+1 (555) 123-4567</p>
+          </div>
+          <div class="contact-item animate-fade-right animate-delay-4">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>123 Tech Street<br>Silicon Valley, CA</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="nav-dot active" data-section="hero"></div>
+    <div class="nav-dot" data-section="about"></div>
+    <div class="nav-dot" data-section="services"></div>
+    <div class="nav-dot" data-section="portfolio"></div>
+    <div class="nav-dot" data-section="team"></div>
+    <div class="nav-dot" data-section="testimonials"></div>
+    <div class="nav-dot" data-section="stats"></div>
+    <div class="nav-dot" data-section="contact"></div>
+  </div>
 
   <!-- Footer -->
-  <footer id="contact" class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section fade-in">
-          <h3>NexaCore Consultancy Services</h3>
-          <p>Elevating Your Business Through Expert IT Consultancy and Innovative Solutions</p>
-          <p>Transform your digital presence with our comprehensive suite of services designed to drive growth and
-            success in today's competitive landscape.</p>
-          <div class="social-icons">
-            <a href="#" class="social-icon" aria-label="Follow us on Facebook">
-              <i class="fab fa-facebook-f" aria-hidden="true"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Follow us on Twitter">
-              <i class="fab fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Connect with us on LinkedIn">
-              <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Follow us on Instagram">
-              <i class="fab fa-instagram" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-section fade-in">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#home"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
-            <li><a href="#about"><i class="fas fa-users" aria-hidden="true"></i> About Us</a></li>
-            <li><a href="#services"><i class="fas fa-cogs" aria-hidden="true"></i> Services</a></li>
-            <li><a href="#portfolio"><i class="fas fa-briefcase" aria-hidden="true"></i> Portfolio</a></li>
-            <li><a href="#clients"><i class="fas fa-handshake" aria-hidden="true"></i> Clients</a></li>
-            <li><a href="#vision"><i class="fas fa-eye" aria-hidden="true"></i> Vision</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section fade-in">
-          <h3>Our Services</h3>
-          <ul class="footer-links">
-            <li><a href="#services"><i class="fas fa-lightbulb" aria-hidden="true"></i> IT Consultancy</a></li>
-            <li><a href="#services"><i class="fas fa-code" aria-hidden="true"></i> Web Development</a></li>
-            <li><a href="#services"><i class="fas fa-mobile-alt" aria-hidden="true"></i> App Development</a></li>
-            <li><a href="#services"><i class="fas fa-camera" aria-hidden="true"></i> Product Photography</a></li>
-            <li><a href="#services"><i class="fas fa-chart-line" aria-hidden="true"></i> Digital Marketing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section fade-in">
-          <h3>Contact Information</h3>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-            </div>
-            <div>
-              <strong>Email:</strong><br>
-              <a href="mailto:info@nexacore.com">info@nexacore.com</a>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone" aria-hidden="true"></i>
-            </div>
-            <div>
-              <strong>Phone:</strong><br>
-              <a href="tel:+11234567890">+1 (123) 456-7890</a>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-            </div>
-            <div>
-              <strong>Address:</strong><br>
-              123 Tech Street<br>
-              Innovation City, USA
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2025 NexaCore Consultancy Services. All rights reserved. | Designed with excellence for digital
-          transformation.</p>
-      </div>
+  <footer class="footer">
+    <div class="footer-info">
+      <span>&copy; 2024 NexaCore Consultancy Services</span>
+      <span>Transforming businesses through technology</span>
+    </div>
+    <div class="social-links">
+      <a href="#" class="social-link" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="#" class="social-link" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#" class="social-link" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="#" class="social-link" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
     </div>
   </footer>
 
   <script>
-    // Register GSAP plugins
-    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+    // Current section tracking
+    let currentSection = 'hero';
+    const sections = document.querySelectorAll('.section');
+    const navDots = document.querySelectorAll('.nav-dot');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    // Performance optimizations
-    let isAnimationEnabled = true;
-    let isMobile = window.innerWidth <= 768;
-    let currentSection = 0;
-    let isScrolling = false;
-    let scrollTimeout;
+    // Update active indicators based on current section
+    function updateActiveSection(sectionId) {
+      currentSection = sectionId;
 
-    // Reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      isAnimationEnabled = false;
-      gsap.set('*', {
-        animation: 'none !important',
-        transition: 'none !important'
+      // Update navigation dots
+      navDots.forEach(dot => {
+        dot.classList.toggle('active', dot.getAttribute('data-section') === sectionId);
+      });
+
+      // Update navigation links
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        link.classList.toggle('active', href === `#${sectionId}`);
       });
     }
 
-    // Performance monitoring
-    const performance = {
-      start: Date.now(),
-      loadTime: 0,
-      scrollEvents: 0
+    // Intersection Observer for scroll detection
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -20% 0px',
+      threshold: 0.6
     };
 
-    // Optimized scroll handler with throttling
-    function handleScroll() {
-      performance.scrollEvents++;
-
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-
-      scrollTimeout = setTimeout(() => {
-        updateScrollIndicator();
-        updateHeaderState();
-      }, 16); // ~60fps
-    }
-
-    // Enhanced initialization
-    function initializeApp() {
-      performance.loadTime = Date.now() - performance.start;
-      console.log(`App initialized in ${performance.loadTime}ms`);
-
-      // Hide loading screen
-      const loading = document.getElementById('loading');
-      if (loading) {
-        gsap.to(loading, {
-          opacity: 0,
-          duration: 0.5,
-          onComplete: () => {
-            loading.style.display = 'none';
-          }
-        });
-      }
-
-      // Initialize components
-      setupScrolling();
-      setupAnimations();
-      setupNavigation();
-      setupInteractions();
-
-      // Performance logging
-      setTimeout(() => {
-        console.log(`Scroll events in first 5s: ${performance.scrollEvents}`);
-      }, 5000);
-    }
-
-    // Enhanced scroll setup with snap points
-    function setupScrolling() {
-      // Enable CSS scroll snap for better performance
-      document.documentElement.style.scrollSnapType = 'y mandatory';
-
-      // Add scroll event listener with passive option for better performance
-      window.addEventListener('scroll', handleScroll, { passive: true });
-
-      // Setup intersection observer for section detection
-      const sections = document.querySelectorAll('.section');
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-            const sectionIndex = Array.from(sections).indexOf(entry.target);
-            updateCurrentSection(sectionIndex);
-          }
-        });
-      }, {
-        threshold: 0.5,
-        rootMargin: '-10% 0px -10% 0px'
-      });
-
-      sections.forEach(section => {
-        sectionObserver.observe(section);
-      });
-    }
-
-    // Optimized animations setup
-    function setupAnimations() {
-      if (!isAnimationEnabled) return;
-
-      // Hero animations with improved timing
-      const heroTimeline = gsap.timeline({ delay: 0.3 });
-      heroTimeline
-        .to('.hero-title', {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: 'power3.out'
-        })
-        .to('.hero-subtitle', {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power2.out'
-        }, '-=0.8')
-        .to('.hero .cta-button', {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'back.out(1.7)'
-        }, '-=0.6')
-        .to('.hero .scroll-indicator', {
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out'
-        }, '-=0.4');
-
-      // Batch DOM reads for better performance
-      const elementsToAnimate = {
-        fadeIn: document.querySelectorAll('.fade-in'),
-        scaleIn: document.querySelectorAll('.scale-in'),
-        slideLeft: document.querySelectorAll('.slide-left'),
-        slideRight: document.querySelectorAll('.slide-right')
-      };
-
-      // Setup intersection observer for animations
-      const animationObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateElement(entry.target);
-            animationObserver.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -10% 0px'
-      });
-
-      // Observe all animated elements
-      Object.values(elementsToAnimate).forEach(nodeList => {
-        nodeList.forEach(el => animationObserver.observe(el));
-      });
-
-      // Staggered card animations
-      setupCardAnimations();
-    }
-
-    // Enhanced card animations
-    function setupCardAnimations() {
-      if (!isAnimationEnabled) return;
-
-      // Service cards with optimized stagger
-      gsap.utils.toArray('.service-card').forEach((card, index) => {
-        gsap.fromTo(card,
-          {
-            opacity: 0,
-            y: 60,
-            scale: 0.9
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            delay: index * 0.1,
-            ease: 'back.out(1.7)',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-      });
-
-      // Team cards with improved hover effects
-      gsap.utils.toArray('.team-card').forEach((card, index) => {
-        gsap.fromTo(card,
-          {
-            opacity: 0,
-            scale: 0.8,
-            rotation: -5
-          },
-          {
-            opacity: 1,
-            scale: 1,
-            rotation: 0,
-            duration: 0.8,
-            delay: index * 0.15,
-            ease: 'back.out(1.7)',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-
-        // Enhanced hover animation
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, {
-            y: -15,
-            scale: 1.05,
-            rotation: 2,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        });
-
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {
-            y: 0,
-            scale: 1,
-            rotation: 0,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        });
-      });
-
-      // Portfolio items with magnetic effect
-      gsap.utils.toArray('.portfolio-item').forEach((item, index) => {
-        gsap.fromTo(item,
-          {
-            opacity: 0,
-            y: 50,
-            rotationX: 45
-          },
-          {
-            opacity: 1,
-            y: 0,
-            rotationX: 0,
-            duration: 0.8,
-            delay: index * 0.1,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-
-        // Magnetic hover effect
-        item.addEventListener('mousemove', (e) => {
-          const rect = item.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-          const deltaX = (e.clientX - centerX) * 0.1;
-          const deltaY = (e.clientY - centerY) * 0.1;
-
-          gsap.to(item, {
-            x: deltaX,
-            y: deltaY,
-            scale: 1.02,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        });
-
-        item.addEventListener('mouseleave', () => {
-          gsap.to(item, {
-            x: 0,
-            y: 0,
-            scale: 1,
-            duration: 0.4,
-            ease: 'elastic.out(1, 0.3)'
-          });
-        });
-      });
-    }
-
-    // Optimized element animation
-    function animateElement(element) {
-      if (!isAnimationEnabled) return;
-
-      const animations = {
-        'fade-in': {
-          from: { opacity: 0, y: 30 },
-          to: { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
-        },
-        'scale-in': {
-          from: { opacity: 0, scale: 0.8 },
-          to: { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' }
-        },
-        'slide-left': {
-          from: { opacity: 0, x: -50 },
-          to: { opacity: 1, x: 0, duration: 0.8, ease: 'power2.out' }
-        },
-        'slide-right': {
-          from: { opacity: 0, x: 50 },
-          to: { opacity: 1, x: 0, duration: 0.8, ease: 'power2.out' }
-        }
-      };
-
-      for (const [className, anim] of Object.entries(animations)) {
-        if (element.classList.contains(className)) {
-          gsap.fromTo(element, anim.from, anim.to);
-          break;
-        }
-      }
-    }
-
-    // Navigation setup
-    function setupNavigation() {
-      const menuToggle = document.getElementById('menuToggle');
-      const mobileNav = document.getElementById('mobileNav');
-
-      if (menuToggle && mobileNav) {
-        menuToggle.addEventListener('click', () => {
-          const isActive = mobileNav.classList.toggle('active');
-
-          // Animate hamburger lines
-          const lines = menuToggle.querySelectorAll('.menu-line');
-          if (isActive) {
-            gsap.to(lines[0], { rotation: 45, y: 6, duration: 0.3 });
-            gsap.to(lines[1], { opacity: 0, duration: 0.3 });
-            gsap.to(lines[2], { rotation: -45, y: -6, duration: 0.3 });
-          } else {
-            gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3 });
-            gsap.to(lines[1], { opacity: 1, duration: 0.3 });
-            gsap.to(lines[2], { rotation: 0, y: 0, duration: 0.3 });
-          }
-        });
-      }
-
-      // Navigation click handlers
-      document.addEventListener('click', (e) => {
-        const sectionAttr = e.target.dataset.section;
-        if (sectionAttr !== undefined) {
-          e.preventDefault();
-          scrollToSection(parseInt(sectionAttr));
-
-          // Close mobile menu
-          if (mobileNav?.classList.contains('active')) {
-            mobileNav.classList.remove('active');
-            const lines = menuToggle.querySelectorAll('.menu-line');
-            gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3 });
-            gsap.to(lines[1], { opacity: 1, duration: 0.3 });
-            gsap.to(lines[2], { rotation: 0, y: 0, duration: 0.3 });
-          }
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          updateActiveSection(sectionId);
         }
       });
-    }
+    }, observerOptions);
 
-    // Enhanced scroll to section
-    function scrollToSection(sectionIndex) {
-      if (isScrolling) return;
+    // Observe all sections
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
 
-      isScrolling = true;
-      const sections = document.querySelectorAll('.section');
-      const targetSection = sections[sectionIndex];
+    // Navigation dots click handling
+    navDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const sectionId = dot.getAttribute('data-section');
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-      if (targetSection) {
-        // Use native scrollIntoView for better performance
-        targetSection.scrollIntoView({
+    // Navigation links smooth scroll
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        const targetSection = document.querySelector(href);
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // CTA button smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        const targetSection = document.querySelector(href);
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const sectionsArray = Array.from(sections);
+      const currentIndex = sectionsArray.findIndex(section => section.id === currentSection);
+
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % sectionsArray.length;
+        sectionsArray[nextIndex].scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
-
-        setTimeout(() => {
-          updateCurrentSection(sectionIndex);
-          isScrolling = false;
-        }, 800);
-      } else {
-        isScrolling = false;
-      }
-    }
-
-    // Update current section
-    function updateCurrentSection(newSection) {
-      currentSection = newSection;
-      updateScrollIndicator();
-      updateNavigation();
-    }
-
-    // Update scroll indicator
-    function updateScrollIndicator() {
-      const scrollDots = document.querySelectorAll('.scroll-dot');
-      scrollDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSection);
-      });
-    }
-
-    // Update navigation active state
-    function updateNavigation() {
-      document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (parseInt(link.dataset.section) === currentSection) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    // Header state update
-    function updateHeaderState() {
-      const header = document.querySelector('.header');
-      if (header) {
-        header.classList.toggle('scrolled', window.scrollY > 100);
-      }
-    }
-
-    // Enhanced interaction setup
-    function setupInteractions() {
-      // Keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown' && currentSection < 6) {
-          e.preventDefault();
-          scrollToSection(currentSection + 1);
-        } else if (e.key === 'ArrowUp' && currentSection > 0) {
-          e.preventDefault();
-          scrollToSection(currentSection - 1);
-        } else if (e.key === 'Escape') {
-          closeActiveModal();
-        }
-      });
-
-      // Touch/swipe handling for mobile
-      if (isMobile) {
-        let startY = 0;
-        let startTime = 0;
-
-        document.addEventListener('touchstart', (e) => {
-          startY = e.touches[0].clientY;
-          startTime = Date.now();
-        }, { passive: true });
-
-        document.addEventListener('touchend', (e) => {
-          if (!startY || !startTime) return;
-
-          const endY = e.changedTouches[0].clientY;
-          const endTime = Date.now();
-          const deltaY = startY - endY;
-          const deltaTime = endTime - startTime;
-
-          // Only handle fast swipes
-          if (Math.abs(deltaY) > 50 && deltaTime < 300) {
-            if (deltaY > 0 && currentSection < 6) {
-              scrollToSection(currentSection + 1);
-            } else if (deltaY < 0 && currentSection > 0) {
-              scrollToSection(currentSection - 1);
-            }
-          }
-
-          startY = 0;
-          startTime = 0;
-        }, { passive: true });
-      }
-    }
-
-    // Enhanced modal functionality
-    function openModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (!modal) return;
-
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      if (isAnimationEnabled) {
-        gsap.fromTo(modal,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.3 }
-        );
-
-        gsap.fromTo(modal.querySelector('.modal-content'),
-          { scale: 0.7, opacity: 0, y: 50 },
-          { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: 'back.out(1.7)' }
-        );
-      }
-
-      // Trap focus
-      const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      const firstElement = focusableElements[0];
-      firstElement?.focus();
-    }
-
-    function closeModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (!modal) return;
-
-      if (isAnimationEnabled) {
-        gsap.to(modal, {
-          opacity: 0,
-          duration: 0.3,
-          onComplete: () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-          }
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        const prevIndex = currentIndex === 0 ? sectionsArray.length - 1 : currentIndex - 1;
+        sectionsArray[prevIndex].scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
-      } else {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-
-    function closeActiveModal() {
-      const activeModal = document.querySelector('.modal.active');
-      if (activeModal) {
-        closeModal(activeModal.id);
-      }
-    }
-
-    // Close modal on background click
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal')) {
-        closeModal(e.target.id);
       }
     });
 
-    // Resize handler
-    function handleResize() {
-      const wasMobile = isMobile;
-      isMobile = window.innerWidth <= 768;
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.querySelector('.nav');
 
-      if (wasMobile !== isMobile) {
-        ScrollTrigger.refresh();
-      }
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
     }
 
-    window.addEventListener('resize', handleResize, { passive: true });
+    // Initialize
+    updateActiveSection('hero');
 
-    // Page visibility optimization
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        gsap.globalTimeline.pause();
-      } else {
-        gsap.globalTimeline.play();
+    // ========== ENHANCED ANIMATIONS & INTERACTIONS ==========
+
+    // Intersection Observer for animations
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+
+          // Add animation classes when element comes into view
+          if (target.classList.contains('animate-fade-up') ||
+            target.classList.contains('animate-fade-left') ||
+            target.classList.contains('animate-fade-right') ||
+            target.classList.contains('animate-scale') ||
+            target.classList.contains('animate-slide-down') ||
+            target.classList.contains('animate-rotate') ||
+            target.classList.contains('animate-bounce')) {
+
+            target.style.opacity = '1';
+            target.style.transform = target.style.transform || '';
+          }
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all animated elements
+    document.querySelectorAll('[class*="animate-"]').forEach(el => {
+      el.style.opacity = '0';
+      animationObserver.observe(el);
+    });
+
+    // Animated Number Counter
+    function animateNumber(element, start, end, duration) {
+      const startTime = performance.now();
+      const difference = end - start;
+
+      function updateNumber(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing function for smooth animation
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (difference * easeOutCubic));
+
+        element.textContent = current;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateNumber);
+        } else {
+          element.textContent = end;
+        }
+      }
+
+      requestAnimationFrame(updateNumber);
+    }
+
+    // Stats counter animation
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const statNumber = entry.target.querySelector('.stat-number');
+          if (statNumber && !statNumber.dataset.animated) {
+            const targetCount = parseInt(statNumber.dataset.count);
+            animateNumber(statNumber, 0, targetCount, 2000);
+            statNumber.dataset.animated = 'true';
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    // Observe stats cards
+    document.querySelectorAll('.stat-card').forEach(card => {
+      statsObserver.observe(card);
+    });
+
+    // Enhanced hover effects for service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-15px) scale(1.02)';
+        card.style.boxShadow = '0 25px 50px rgba(23, 19, 17, 0.2)';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+        card.style.boxShadow = '0 8px 25px rgba(23, 19, 17, 0.08)';
+      });
+    });
+
+    // Portfolio item hover effects
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        const img = item.querySelector('.portfolio-image');
+        if (img) {
+          img.style.transform = 'scale(1.1)';
+        }
+      });
+
+      item.addEventListener('mouseleave', () => {
+        const img = item.querySelector('.portfolio-image');
+        if (img) {
+          img.style.transform = 'scale(1)';
+        }
+      });
+    });
+
+    // Team card hover effects
+    document.querySelectorAll('.team-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px) rotateY(5deg)';
+        card.style.boxShadow = '0 20px 40px rgba(23, 19, 17, 0.15)';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) rotateY(0deg)';
+        card.style.boxShadow = '0 8px 25px rgba(23, 19, 17, 0.08)';
+      });
+    });
+
+    // Smooth scroll for CTA buttons with animation
+    document.querySelectorAll('.cta-button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Add click animation
+        button.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          button.style.transform = 'scale(1)';
+        }, 150);
+
+        // Scroll to target
+        const href = button.getAttribute('href');
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add floating animation to hero elements
+    document.querySelectorAll('.floating-icon').forEach((icon, index) => {
+      icon.style.animationDelay = `${index * 0.5}s`;
+    });
+
+    // Dynamic gradient animation
+    const gradientElements = document.querySelectorAll('.gradient-bg-animated');
+    gradientElements.forEach(element => {
+      element.addEventListener('mouseenter', () => {
+        element.style.animationDuration = '2s';
+      });
+
+      element.addEventListener('mouseleave', () => {
+        element.style.animationDuration = '8s';
+      });
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.section.hero');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
       }
     });
 
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializeApp);
-    } else {
-      initializeApp();
-    }
-
-    // Global functions
-    window.openModal = openModal;
-    window.closeModal = closeModal;
-    window.scrollToSection = scrollToSection;
-
-    // Debug info (remove in production)
-    console.log('NexaCore website initialized with enhanced performance');
-    console.log('Animation enabled:', isAnimationEnabled);
-    console.log('Mobile mode:', isMobile);
+    console.log('NexaCore enhanced slideshow with animations initialized');
   </script>
 </body>
 
