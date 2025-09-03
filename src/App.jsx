@@ -1,12 +1,10 @@
 import React from 'react';
-import MajorProjects from './components/MajorProjects';
+import IndexHome from './Components/HomePage';
 
 function App() {
   return (
     <div className="min-h-screen bg-white font-sans">
-      {/* Other sections */}
-      {/* <MajorProjects /> */}
-      {/* Other sections */}
+      <IndexHome />
     </div>
   );
 }
