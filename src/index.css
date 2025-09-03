@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+
+
+/* Center slide (straight) */
+.new-dev-slider .swiper-slide-active .project-card {
+  transform: scale(1) rotateY(0deg);
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+/* Left slide tilt */
+.new-dev-slider .swiper-slide-prev .project-card {
+  transform: scale(0.95) rotateY(10deg);
+  transition: transform 0.4s ease;
+  opacity: 0.9;
+}
+
+/* Right slide tilt */
+.new-dev-slider .swiper-slide-next .project-card {
+  transform: scale(0.95) rotateY(-10deg);
+  transition: transform 0.4s ease;
+  opacity: 0.9;
+}
+
+/* Faded background slides */
+.new-dev-slider .swiper-slide {
+  opacity: 0.6;
+}
+
+/* Arrows custom */
+.new-dev-slider .swiper-button-next,
+.new-dev-slider .swiper-button-prev {
+  color: black !important;
+  font-weight: bold;
+  transform: scale(0.8);
+}
+
+.new-dev-slider .swiper-button-next::after,
+.new-dev-slider .swiper-button-prev::after {
+  font-size: 22px;
+}

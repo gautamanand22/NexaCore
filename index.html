@@ -1,0 +1,4222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaCore Consultancy Services - IT Solutions</title>
+  <meta name="description"
+    content="Empowering Businesses with Expert IT Consultancy and Innovative Solutions. Leading IT consultancy, website design, app development, product photography, and marketing services.">
+  <meta name="keywords"
+    content="IT consultancy, website design, app development, product photography, digital marketing, business solutions, NexaCore">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="NexaCore Consultancy Services">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="NexaCore Consultancy Services - IT Solutions">
+  <meta property="og:description" content="Empowering Businesses with Expert IT Consultancy and Innovative Solutions">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nexacore.com">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts - Inter & Montserrat -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- GSAP Library -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Brand Colors - Matching archi-malinstudio.com */
+      --bg-beige: #FFFBF3;
+      --text-dark: #171311;
+      --accent-grey: #666666;
+      --white: #FFFFFF;
+      --black: #000000;
+
+      /* Typography */
+      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-secondary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2rem;
+      --space-xl: 3rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Border Radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+
+      /* Transitions */
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+
+      /* Z-index */
+      --z-header: 1000;
+      --z-modal: 2000;
+      --z-loading: 3000;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--bg-beige);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      overflow-y: hidden;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: var(--z-loading);
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 2px solid transparent;
+      border-top: 2px solid var(--text-dark);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: rgba(255, 251, 243, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-xl);
+      z-index: var(--z-header);
+      border-bottom: 1px solid rgba(23, 19, 17, 0.1);
+    }
+
+    .logo {
+      font-family: var(--font-secondary);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav {
+      display: flex;
+      list-style: none;
+      gap: var(--space-xl);
+    }
+
+    .nav-link {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.95rem;
+      transition: var(--transition-normal);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-grey);
+      transform: scale(1.05);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--text-dark);
+      transition: width var(--transition-normal);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .menu-line {
+      width: 24px;
+      height: 2px;
+      background: var(--text-dark);
+      transition: var(--transition-normal);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background: var(--bg-beige);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-lg);
+      transition: right var(--transition-slow);
+      z-index: 999;
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav-link {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 500;
+      transition: var(--transition-normal);
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--accent-grey);
+      transform: scale(1.1);
+    }
+
+    /* Horizontal Container */
+    .horizontal-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .horizontal-scroll {
+      display: flex;
+      height: 100vh;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .section {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(23, 19, 17, 0.4), rgba(23, 19, 17, 0.4)),
+        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2200&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 var(--space-lg);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-family: var(--font-secondary);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.02em;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 400;
+      margin-bottom: var(--space-xl);
+      opacity: 0.9;
+      line-height: 1.4;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--bg-beige);
+      color: var(--text-dark);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all var(--transition-normal);
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(20px);
+      box-shadow: 0 4px 15px rgba(255, 251, 243, 0.3);
+    }
+
+    .cta-button:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 251, 243, 0.4);
+    }
+
+    /* About Section */
+    .about {
+      background: var(--white);
+      padding: 0 var(--space-xl);
+    }
+
+    .about-content {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: var(--space-lg);
+      line-height: 1.2;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.8;
+      margin-bottom: var(--space-md);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    .team-card {
+      text-align: center;
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      background: var(--bg-beige);
+      transition: var(--transition-normal);
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(23, 19, 17, 0.1);
+    }
+
+    .team-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: var(--space-sm);
+    }
+
+    .team-name {
+      font-weight: 600;
+      margin-bottom: var(--space-xs);
+    }
+
+    .team-role {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Services Section */
+    .services {
+      background: var(--bg-beige);
+      padding: 0 var(--space-xl);
+    }
+
+    .services-content {
+      max-width: 1400px;
+      width: 100%;
+    }
+
+    .services-title {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      text-align: center;
+      transition: all var(--transition-normal);
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(23, 19, 17, 0.15);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto var(--space-md);
+      border-radius: var(--radius-md);
+      background: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.5rem;
+    }
+
+    .service-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .service-description {
+      opacity: 0.7;
+      line-height: 1.5;
+    }
+
+    /* Portfolio Section */
+    .portfolio {
+      background: var(--white);
+      padding: 0 var(--space-xl);
+    }
+
+    .portfolio-content {
+      max-width: 1400px;
+      width: 100%;
+    }
+
+    .portfolio-title {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .portfolio-item {
+      background: var(--bg-beige);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition-normal);
+      cursor: pointer;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 35px rgba(23, 19, 17, 0.15);
+    }
+
+    .portfolio-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .portfolio-info {
+      padding: var(--space-lg);
+    }
+
+    .portfolio-project-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .portfolio-description {
+      opacity: 0.7;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    /* Clients Section */
+    .clients {
+      background: var(--bg-beige);
+      padding: 0 var(--space-xl);
+    }
+
+    .clients-content {
+      max-width: 1200px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .clients-title {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .client-logos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-3xl);
+    }
+
+    .client-logo {
+      height: 80px;
+      opacity: 0.6;
+      transition: var(--transition-normal);
+      filter: grayscale(100%);
+    }
+
+    .client-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .testimonial {
+      background: var(--white);
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      text-align: left;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+      opacity: 0.8;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+    }
+
+    .testimonial-company {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Vision Section */
+    .vision {
+      background: linear-gradient(rgba(23, 19, 17, 0.7), rgba(23, 19, 17, 0.7)),
+        url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .vision-content {
+      max-width: 800px;
+      padding: 0 var(--space-lg);
+    }
+
+    .vision-title {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: var(--space-lg);
+    }
+
+    .vision-text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* Footer/Contact Section */
+    .footer {
+      background: var(--text-dark);
+      color: var(--bg-beige);
+      padding: 0 var(--space-xl);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-xl);
+      text-align: center;
+    }
+
+    .footer-section h3 {
+      font-weight: 600;
+      margin-bottom: var(--space-md);
+      font-size: 1.1rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      opacity: 0.8;
+      line-height: 1.6;
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-normal);
+    }
+
+    .footer-section a:hover {
+      opacity: 1;
+    }
+
+    .social-links {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      margin-top: var(--space-md);
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-beige);
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-normal);
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 251, 243, 0.3);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: var(--space-xl);
+      border-top: 1px solid rgba(255, 251, 243, 0.2);
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: var(--z-modal);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-normal);
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--white);
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      position: relative;
+      transform: scale(0.7);
+      transition: transform var(--transition-normal);
+    }
+
+    .modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-dark);
+      transition: var(--transition-normal);
+    }
+
+    .modal-close:hover {
+      transform: scale(1.1);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: var(--space-lg);
+      right: var(--space-lg);
+      z-index: 500;
+      display: flex;
+      gap: var(--space-xs);
+    }
+
+    .scroll-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(23, 19, 17, 0.3);
+      transition: var(--transition-normal);
+      cursor: pointer;
+    }
+
+    .scroll-dot.active {
+      background: var(--text-dark);
+    }
+
+    /* Hero Scroll Indicator */
+    .hero .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--white);
+      font-size: 0.9rem;
+      opacity: 0;
+      animation: fadeInOut 3s ease-in-out infinite;
+    }
+
+    @keyframes fadeInOut {
+
+      0%,
+      100% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .scroll-arrow {
+      font-size: 1.2rem;
+      animation: bounceRight 2s ease-in-out infinite;
+    }
+
+    @keyframes bounceRight {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(10px);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header {
+        padding: 0 var(--space-lg);
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+        text-align: center;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .client-logos {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      /* Mobile horizontal scroll */
+      .horizontal-scroll {
+        width: calc(100vw * 7);
+        /* 7 sections */
+      }
+
+      .section {
+        padding: var(--space-lg);
+      }
+
+      /* Hide hero scroll indicator on mobile */
+      .hero .scroll-indicator {
+        display: none;
+      }
+
+      /* Fix background attachment on mobile */
+      .hero {
+        background-attachment: scroll;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        height: 70px;
+        padding: 0 var(--space-md);
+      }
+
+      .hero-content,
+      .about-content,
+      .services-content,
+      .portfolio-content,
+      .clients-content,
+      .vision-content,
+      .footer-content {
+        padding: 0 var(--space-md);
+      }
+
+      .services-grid,
+      .portfolio-grid {
+        gap: var(--space-md);
+      }
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.6s ease;
+    }
+
+    .scale-in.animate {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slide-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s ease;
+    }
+
+    .slide-left.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.8s ease;
+    }
+
+    .slide-right.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Parallax effect */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Smooth scrolling for mobile */
+    @media (max-width: 768px) {
+      .horizontal-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .horizontal-scroll {
+        scroll-snap-align: start;
+      }
+
+      .section {
+        scroll-snap-align: start;
+      }
+    }
+  </style>
+  scroll-behavior: smooth;
+  }
+
+  body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  color: var(--dark-grey);
+  background-color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Improved Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+  }
+
+  h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  }
+
+  h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  }
+
+  h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  }
+
+  p {
+  margin-bottom: var(--space-md);
+  line-height: 1.8;
+  }
+
+  a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-normal);
+  }
+
+  img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  }
+
+  /* Utility Classes */
+  .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  }
+
+  @media (max-width: 768px) {
+  .container {
+  padding: 0 var(--space-md);
+  }
+  }
+
+  .section {
+  padding: var(--space-3xl) 0;
+  }
+
+  @media (max-width: 768px) {
+  .section {
+  padding: var(--space-2xl) 0;
+  }
+  }
+
+  .section-title {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: var(--space-3xl);
+  color: var(--dark-grey);
+  position: relative;
+  }
+
+  .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+  }
+
+  /* Button Styles */
+  .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  }
+
+  .btn-primary {
+  background: var(--gradient-primary);
+  color: var(--white);
+  box-shadow: var(--shadow-medium);
+  }
+
+  .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-heavy);
+  }
+
+  .btn-secondary {
+  background: transparent;
+  color: var(--dark-grey);
+  border: 2px solid var(--primary-beige);
+  }
+
+  .btn-secondary:hover {
+  background: var(--primary-beige);
+  transform: translateY(-2px);
+  }
+
+  /* Header Styles */
+  .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(221, 208, 200, 0.2);
+  z-index: var(--z-header);
+  padding: var(--space-md) 0;
+  transition: all var(--transition-normal);
+  }
+
+  .header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-light);
+  padding: var(--space-sm) 0;
+  }
+
+  .nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+
+  .logo {
+  font-size: var(--font-size-2xl);
+  font-weight: 900;
+  color: var(--dark-grey);
+  letter-spacing: -1px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  }
+
+  .nav-menu {
+  display: flex;
+  list-style: none;
+  gap: var(--space-xl);
+  align-items: center;
+  }
+
+  .nav-menu a {
+  font-weight: 500;
+  color: var(--dark-grey);
+  position: relative;
+  padding: var(--space-xs) var(--space-sm);
+  transition: var(--transition-normal);
+  }
+
+  .nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--accent-brown);
+  transition: var(--transition-normal);
+  }
+
+  .nav-menu a:hover::after {
+  width: 100%;
+  }
+
+  .nav-menu a:hover {
+  color: var(--accent-brown);
+  }
+
+  /* Mobile Navigation */
+  .hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: var(--space-xs);
+  background: transparent;
+  border: none;
+  gap: 4px;
+  }
+
+  .hamburger span {
+  width: 24px;
+  height: 3px;
+  background: var(--dark-grey);
+  border-radius: 2px;
+  transition: var(--transition-normal);
+  }
+
+  .hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+  opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  @media (max-width: 768px) {
+  .nav-menu {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: var(--space-3xl);
+  gap: var(--space-lg);
+  transform: translateY(-100vh);
+  transition: transform var(--transition-slow);
+  }
+
+  .nav-menu.active {
+  transform: translateY(0);
+  }
+
+  .hamburger {
+  display: flex;
+  }
+
+  .nav-menu a {
+  font-size: var(--font-size-lg);
+  padding: var(--space-md);
+  }
+  }
+
+  /* Hero Section */
+  .hero {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  overflow: hidden;
+  }
+
+  .hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+  rgba(26, 26, 26, 0.7) 0%,
+  rgba(50, 50, 50, 0.5) 50%,
+  rgba(166, 124, 82, 0.3) 100%),
+  url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -1;
+  }
+
+  .hero-content {
+  max-width: 900px;
+  padding: 0 var(--space-lg);
+  z-index: 1;
+  }
+
+  .hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateY(50px);
+  }
+
+  .hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 400;
+  margin-bottom: var(--space-xl);
+  opacity: 0.9;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(30px);
+  }
+
+  .hero-cta {
+  opacity: 0;
+  transform: translateY(20px);
+  }
+
+  /* Hero Slider */
+  .hero-slider {
+  position: absolute;
+  bottom: var(--space-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  z-index: 2;
+  }
+
+  .slide {
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  text-align: center;
+  transition: var(--transition-normal);
+  }
+
+  .slide.active {
+  display: block;
+  animation: slideIn 0.5s ease;
+  }
+
+  @keyframes slideIn {
+  from {
+  opacity: 0;
+  transform: translateY(20px);
+  }
+
+  to {
+  opacity: 1;
+  transform: translateY(0);
+  }
+  }
+
+  .slide-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-md);
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .slide-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--white);
+  margin: 0;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+  opacity: 0.8;
+  animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+  transform: translateY(0);
+  }
+
+  40% {
+  transform: translateY(-10px);
+  }
+
+  60% {
+  transform: translateY(-5px);
+  }
+  }
+
+  /* Section Backgrounds */
+  .bg-white {
+  background-color: var(--white);
+  }
+
+  .bg-light {
+  background-color: var(--light-beige);
+  }
+
+  .bg-primary {
+  background: var(--gradient-primary);
+  }
+
+  .bg-dark {
+  background: var(--gradient-dark);
+  color: var(--white);
+  }
+
+  /* About Section */
+  .about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  margin-bottom: var(--space-3xl);
+  }
+
+  .about-text {
+  font-size: var(--font-size-md);
+  line-height: 1.8;
+  color: var(--text-light);
+  }
+
+  .about-image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: var(--transition-normal);
+  }
+
+  .about-image:hover {
+  transform: perspective(1000px) rotateY(0deg);
+  }
+
+  .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  }
+
+  .team-card {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-light);
+  text-align: center;
+  transition: var(--transition-normal);
+  border: 1px solid rgba(221, 208, 200, 0.3);
+  }
+
+  .team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-heavy);
+  border-color: var(--accent-brown);
+  }
+
+  .team-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-md);
+  object-fit: cover;
+  border: 4px solid var(--primary-beige);
+  transition: var(--transition-normal);
+  }
+
+  .team-card:hover .team-avatar {
+  border-color: var(--accent-brown);
+  transform: scale(1.05);
+  }
+
+  .team-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--dark-grey);
+  margin-bottom: var(--space-xs);
+  }
+
+  .team-role {
+  color: var(--text-light);
+  font-weight: 500;
+  margin: 0;
+  }
+
+  @media (max-width: 768px) {
+  .about-content {
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  }
+
+  .about-image {
+  transform: none;
+  }
+
+  .team-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  }
+  }
+
+  /* Services Section */
+  .services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+  }
+
+  .service-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-normal);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .service-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: var(--shadow-heavy);
+  }
+
+  .service-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: var(--transition-slow);
+  }
+
+  .service-card:hover .service-image {
+  transform: scale(1.1);
+  }
+
+  .service-content {
+  padding: var(--space-xl);
+  }
+
+  .service-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--dark-grey);
+  margin-bottom: var(--space-md);
+  }
+
+  .service-description {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin: 0;
+  }
+
+  .service-icon {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 50px;
+  height: 50px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: var(--font-size-lg);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transition-normal);
+  }
+
+  .service-card:hover .service-icon {
+  opacity: 1;
+  transform: scale(1);
+  }
+
+  @media (max-width: 768px) {
+  .services-grid {
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  }
+  }
+
+  /* Portfolio Section */
+  .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+  }
+
+  .portfolio-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-normal);
+  }
+
+  .portfolio-item:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-heavy);
+  }
+
+  .portfolio-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: var(--transition-slow);
+  }
+
+  .portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+  rgba(26, 26, 26, 0.9) 0%,
+  rgba(166, 124, 82, 0.8) 100%);
+  color: var(--white);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: var(--transition-normal);
+  }
+
+  .portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+  transform: translateY(0);
+  }
+
+  .portfolio-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  }
+
+  .portfolio-description {
+  line-height: 1.6;
+  margin: 0;
+  }
+
+  @media (max-width: 768px) {
+  .portfolio-grid {
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  }
+  }
+
+  /* Modal Styles */
+  .modal {
+  display: none;
+  position: fixed;
+  z-index: var(--z-modal);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  }
+
+  .modal-content {
+  background: var(--white);
+  margin: 5% auto;
+  padding: var(--space-3xl);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-heavy);
+  }
+
+  .modal-close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-normal);
+  }
+
+  .modal-close:hover {
+  transform: scale(1.1);
+  background: var(--accent-brown);
+  }
+
+  .modal-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin: var(--space-lg) 0;
+  }
+
+  .modal-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--dark-grey);
+  margin-bottom: var(--space-lg);
+  }
+
+  .modal-text {
+  font-size: var(--font-size-md);
+  line-height: 1.8;
+  color: var(--text-light);
+  margin: 0;
+  }
+
+  /* Clients Section */
+  .clients-carousel {
+  margin-bottom: var(--space-3xl);
+  padding: var(--space-xl);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+  }
+
+  .client-logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  }
+
+  .client-logo {
+  width: 140px;
+  height: 90px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.7);
+  transition: var(--transition-normal);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  background: var(--white);
+  box-shadow: var(--shadow-light);
+  }
+
+  .client-logo:hover {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-medium);
+  }
+
+  .testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  }
+
+  .testimonial {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-light);
+  position: relative;
+  border-left: 4px solid var(--accent-brown);
+  }
+
+  .testimonial::before {
+  content: '"';
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  font-size: 3rem;
+  color: var(--primary-beige);
+  font-weight: 900;
+  line-height: 1;
+  }
+
+  .testimonial-text {
+  font-style: italic;
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-md);
+  line-height: 1.7;
+  color: var(--text-light);
+  padding-left: var(--space-xl);
+  }
+
+  .testimonial-author {
+  font-weight: 700;
+  color: var(--dark-grey);
+  font-size: var(--font-size-md);
+  margin: 0;
+  }
+
+  @media (max-width: 768px) {
+  .client-logos {
+  gap: var(--space-lg);
+  }
+
+  .client-logo {
+  width: 120px;
+  height: 80px;
+  }
+
+  .testimonials {
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  }
+  }
+
+  /* Vision Section */
+  .vision {
+  position: relative;
+  color: var(--white);
+  text-align: center;
+  overflow: hidden;
+  }
+
+  .vision-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+  rgba(26, 26, 26, 0.8) 0%,
+  rgba(50, 50, 50, 0.6) 50%,
+  rgba(166, 124, 82, 0.4) 100%),
+  url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -1;
+  }
+
+  .vision-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  }
+
+  .vision-text {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  opacity: 0.95;
+  margin: 0;
+  }
+
+  /* Footer */
+  .footer {
+  background: var(--gradient-dark);
+  color: var(--white);
+  padding: var(--space-3xl) 0 var(--space-lg);
+  }
+
+  .footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  }
+
+  .footer-section h3 {
+  color: var(--primary-beige);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-lg);
+  font-weight: 700;
+  }
+
+  .footer-section p {
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+  opacity: 0.9;
+  }
+
+  .footer-links {
+  list-style: none;
+  }
+
+  .footer-links li {
+  margin-bottom: var(--space-sm);
+  }
+
+  .footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  }
+
+  .footer-links a:hover {
+  color: var(--primary-beige);
+  transform: translateX(5px);
+  }
+
+  .social-icons {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  }
+
+  .social-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: var(--font-size-lg);
+  transition: var(--transition-normal);
+  backdrop-filter: blur(10px);
+  }
+
+  .social-icon:hover {
+  background: var(--primary-beige);
+  border-color: var(--primary-beige);
+  color: var(--dark-grey);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+  }
+
+  .footer-bottom {
+  text-align: center;
+  padding-top: var(--space-xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
+  }
+
+  /* Contact Info Styling */
+  .contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-normal);
+  }
+
+  .contact-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  }
+
+  .contact-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+  }
+
+  /* Animation Classes */
+  .fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  }
+
+  .fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  }
+
+  .fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  }
+
+  .scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  }
+
+  .slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  }
+
+  /* Loading Animation */
+  .loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+  }
+
+  .loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--primary-beige);
+  border-left: 4px solid var(--accent-brown);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+  0% {
+  transform: rotate(0deg);
+  }
+
+  100% {
+  transform: rotate(360deg);
+  }
+  }
+
+  /* Responsive Design Improvements */
+  @media (max-width: 1024px) {
+  .services-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .portfolio-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  }
+
+  @media (max-width: 768px) {
+  .hero-slider {
+  bottom: var(--space-lg);
+  width: 95%;
+  }
+
+  .slide {
+  padding: var(--space-md);
+  }
+
+  .slide-title {
+  font-size: var(--font-size-md);
+  }
+
+  .modal-content {
+  width: 95%;
+  padding: var(--space-lg);
+  margin: 10% auto;
+  }
+
+  .footer-content {
+  grid-template-columns: 1fr;
+  text-align: center;
+  }
+
+  .social-icons {
+  justify-content: center;
+  }
+  }
+
+  @media (max-width: 480px) {
+  .hero-title {
+  font-size: 2.5rem;
+  }
+
+  .section-title {
+  font-size: 2rem;
+  }
+
+  .team-grid,
+  .services-grid,
+  .portfolio-grid,
+  .testimonials {
+  grid-template-columns: 1fr;
+  }
+
+  .client-logos {
+  grid-template-columns: repeat(2, 1fr);
+  }
+  }
+
+  /* Print Styles */
+  @media print {
+
+  .header,
+  .hero-slider,
+  .modal,
+  .loading {
+  display: none !important;
+  }
+
+  .hero {
+  height: auto;
+  padding: var(--space-xl) 0;
+  background: var(--white) !important;
+  color: var(--dark-grey) !important;
+  }
+
+  .section {
+  padding: var(--space-lg) 0;
+  }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+  :root {
+  --primary-beige: #F0E6D2;
+  --dark-grey: #000000;
+  --text-light: #333333;
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+  * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  }
+
+  .hero-background,
+  .vision-background {
+  background-attachment: scroll;
+  }
+
+  .scroll-indicator {
+  animation: none;
+  }
+  }
+  </style>
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">NexaCore</a>
+    <nav>
+      <ul class="nav">
+        <li><a href="#" class="nav-link" data-section="0">Home</a></li>
+        <li><a href="#" class="nav-link" data-section="1">About</a></li>
+        <li><a href="#" class="nav-link" data-section="2">Services</a></li>
+        <li><a href="#" class="nav-link" data-section="3">Portfolio</a></li>
+        <li><a href="#" class="nav-link" data-section="4">Clients</a></li>
+        <li><a href="#" class="nav-link" data-section="5">Vision</a></li>
+        <li><a href="#" class="nav-link" data-section="6">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#" class="mobile-nav-link" data-section="0">Home</a>
+    <a href="#" class="mobile-nav-link" data-section="1">About</a>
+    <a href="#" class="mobile-nav-link" data-section="2">Services</a>
+    <a href="#" class="mobile-nav-link" data-section="3">Portfolio</a>
+    <a href="#" class="mobile-nav-link" data-section="4">Clients</a>
+    <a href="#" class="mobile-nav-link" data-section="5">Vision</a>
+    <a href="#" class="mobile-nav-link" data-section="6">Contact</a>
+  </nav>
+
+  <!-- Horizontal Container -->
+  <div class="horizontal-container">
+    <div class="horizontal-scroll" id="horizontalScroll">
+
+      <!-- Hero Section -->
+      <section class="section hero">
+        <div class="hero-content">
+          <h1 class="hero-title">NexaCore Consultancy Services</h1>
+          <p class="hero-subtitle">Empowering Businesses with Expert IT Consultancy and Innovative Solutions</p>
+          <a href="#" class="cta-button" data-section="6">Consult Now</a>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scroll to explore</span>
+          <div class="scroll-arrow">→</div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="section about">
+        <div class="about-content">
+          <div class="about-text">
+            <h2 class="fade-in">About NexaCore</h2>
+            <p class="fade-in">NexaCore is a leading IT consultancy firm offering strategic guidance, website/app
+              development, photoshoots, and marketing. We empower businesses with innovative solutions that drive growth
+              and digital transformation.</p>
+            <p class="fade-in">Our team of experts combines technical excellence with creative vision to deliver
+              exceptional results. We believe in building long-term partnerships and providing solutions that exceed
+              expectations.</p>
+            <p class="fade-in">With years of experience across diverse industries, we understand the unique challenges
+              businesses face in today's digital landscape and provide tailored solutions for success.</p>
+          </div>
+          <div class="team-grid">
+            <div class="team-card scale-in">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                alt="John Smith" class="team-photo">
+              <h4 class="team-name">John Smith</h4>
+              <p class="team-role">CEO & Founder</p>
+            </div>
+            <div class="team-card scale-in">
+              <img
+                src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                alt="Sarah Johnson" class="team-photo">
+              <h4 class="team-name">Sarah Johnson</h4>
+              <p class="team-role">CTO</p>
+            </div>
+            <div class="team-card scale-in">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                alt="Michael Chen" class="team-photo">
+              <h4 class="team-name">Michael Chen</h4>
+              <p class="team-role">Lead Developer</p>
+            </div>
+            <div class="team-card scale-in">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                alt="Emily Davis" class="team-photo">
+              <h4 class="team-name">Emily Davis</h4>
+              <p class="team-role">Creative Director</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section class="section services">
+        <div class="services-content">
+          <h2 class="services-title fade-in">Our Services</h2>
+          <div class="services-grid">
+            <div class="service-card scale-in">
+              <div class="service-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3 class="service-title">IT Consultancy</h3>
+              <p class="service-description">Strategic IT guidance and digital transformation consulting to optimize
+                your business operations and technology infrastructure.</p>
+            </div>
+            <div class="service-card scale-in">
+              <div class="service-icon">
+                <i class="fas fa-globe"></i>
+              </div>
+              <h3 class="service-title">Website Design & Development</h3>
+              <p class="service-description">Custom website design and development services that create engaging digital
+                experiences and drive business growth.</p>
+            </div>
+            <div class="service-card scale-in">
+              <div class="service-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h3 class="service-title">Web & Mobile App Development</h3>
+              <p class="service-description">Innovative web and mobile applications built with cutting-edge technologies
+                to meet your specific business needs.</p>
+            </div>
+            <div class="service-card scale-in">
+              <div class="service-icon">
+                <i class="fas fa-camera"></i>
+              </div>
+              <h3 class="service-title">Product Photography</h3>
+              <p class="service-description">Professional product photography services that showcase your products in
+                the best light for marketing and e-commerce.</p>
+            </div>
+            <div class="service-card scale-in">
+              <div class="service-icon">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <h3 class="service-title">Digital Marketing</h3>
+              <p class="service-description">Comprehensive digital marketing strategies that increase brand visibility
+                and drive customer engagement across all channels.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section class="section portfolio">
+        <div class="portfolio-content">
+          <h2 class="portfolio-title fade-in">Our Portfolio</h2>
+          <div class="portfolio-grid">
+            <div class="portfolio-item scale-in" onclick="openModal('modal1')">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                alt="IT Consultancy for Startup" class="portfolio-image">
+              <div class="portfolio-info">
+                <h4 class="portfolio-project-title">IT Consultancy for Tech Startup</h4>
+                <p class="portfolio-description">Strategic IT planning and infrastructure setup for a growing fintech
+                  company.</p>
+              </div>
+            </div>
+            <div class="portfolio-item scale-in" onclick="openModal('modal2')">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                alt="E-commerce Website" class="portfolio-image">
+              <div class="portfolio-info">
+                <h4 class="portfolio-project-title">E-commerce Platform Development</h4>
+                <p class="portfolio-description">Custom e-commerce solution with integrated payment processing and
+                  inventory management.</p>
+              </div>
+            </div>
+            <div class="portfolio-item scale-in" onclick="openModal('modal3')">
+              <img
+                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                alt="Mobile App" class="portfolio-image">
+              <div class="portfolio-info">
+                <h4 class="portfolio-project-title">Healthcare Mobile App</h4>
+                <p class="portfolio-description">Cross-platform mobile application for patient management and
+                  telemedicine.</p>
+              </div>
+            </div>
+            <div class="portfolio-item scale-in" onclick="openModal('modal4')">
+              <img
+                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                alt="Product Photography" class="portfolio-image">
+              <div class="portfolio-info">
+                <h4 class="portfolio-project-title">Product Photography Campaign</h4>
+                <p class="portfolio-description">Professional product photography for luxury fashion brand's online
+                  catalog.</p>
+              </div>
+            </div>
+            <div class="portfolio-item scale-in" onclick="openModal('modal5')">
+              <img
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                alt="Corporate Website" class="portfolio-image">
+              <div class="portfolio-info">
+                <h4 class="portfolio-project-title">Corporate Website Redesign</h4>
+                <p class="portfolio-description">Complete website overhaul for a Fortune 500 manufacturing company.</p>
+              </div>
+            </div>
+            <div class="portfolio-item scale-in" onclick="openModal('modal6')">
+              <img
+                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                alt="Marketing Campaign" class="portfolio-image">
+              <div class="portfolio-info">
+                <h4 class="portfolio-project-title">Digital Marketing Campaign</h4>
+                <p class="portfolio-description">Multi-channel digital marketing strategy that increased client ROI by
+                  300%.</p>
+              </div>
+            </div>
+            <div class="portfolio-item scale-in" onclick="openModal('modal7')">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                alt="Web Application" class="portfolio-image">
+              <div class="portfolio-info">
+                <h4 class="portfolio-project-title">Enterprise Web Application</h4>
+                <p class="portfolio-description">Custom CRM system for sales team management and customer relationship
+                  tracking.</p>
+              </div>
+            </div>
+            <div class="portfolio-item scale-in" onclick="openModal('modal8')">
+              <img
+                src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                alt="AI Solution" class="portfolio-image">
+              <div class="portfolio-info">
+                <h4 class="portfolio-project-title">AI-Powered Analytics Platform</h4>
+                <p class="portfolio-description">Machine learning solution for predictive analytics and business
+                  intelligence.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clients Section -->
+      <section class="section clients">
+        <div class="clients-content">
+          <h2 class="clients-title fade-in">Our Clients</h2>
+          <div class="client-logos">
+            <img
+              src="https://images.unsplash.com/photo-1567016432779-094069958ea5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              alt="TechCorp Logo" class="client-logo">
+            <img
+              src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              alt="InnovateCo Logo" class="client-logo">
+            <img
+              src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              alt="FutureTech Logo" class="client-logo">
+            <img
+              src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              alt="GlobalSoft Logo" class="client-logo">
+            <img
+              src="https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              alt="DataFlow Logo" class="client-logo">
+            <img
+              src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              alt="CloudTech Logo" class="client-logo">
+          </div>
+          <div class="testimonials">
+            <div class="testimonial fade-in">
+              <p class="testimonial-text">"NexaCore transformed our entire IT infrastructure. Their strategic approach
+                and expert guidance helped us scale efficiently while reducing costs by 40%."</p>
+              <h4 class="testimonial-author">Jennifer Rodriguez</h4>
+              <p class="testimonial-company">CEO, TechCorp Solutions</p>
+            </div>
+            <div class="testimonial fade-in">
+              <p class="testimonial-text">"The website they developed for us exceeded all expectations. User engagement
+                increased by 250% and our online sales tripled within six months."</p>
+              <h4 class="testimonial-author">David Kim</h4>
+              <p class="testimonial-company">Marketing Director, InnovateCo</p>
+            </div>
+            <div class="testimonial fade-in">
+              <p class="testimonial-text">"Professional, reliable, and innovative. NexaCore's mobile app development
+                expertise helped us launch our product ahead of schedule and under budget."</p>
+              <h4 class="testimonial-author">Lisa Thompson</h4>
+              <p class="testimonial-company">CTO, FutureTech Industries</p>
+            </div>
+            <div class="testimonial fade-in">
+              <p class="testimonial-text">"Their product photography and marketing services gave our brand a complete
+                makeover. We've seen a 180% increase in brand recognition and customer acquisition."</p>
+              <h4 class="testimonial-author">Mark Anderson</h4>
+              <p class="testimonial-company">Brand Manager, GlobalSoft</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vision Section -->
+      <section class="section vision">
+        <div class="vision-content">
+          <h2 class="vision-title fade-in">Our Vision</h2>
+          <p class="vision-text fade-in">To be the leading catalyst for digital transformation, empowering businesses
+            worldwide to harness the full potential of technology. We envision a future where innovation drives growth,
+            creativity fuels success, and technology bridges the gap between ambition and achievement.</p>
+        </div>
+      </section>
+
+      <!-- Footer/Contact Section -->
+      <section class="section footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Company Info</h3>
+            <p>NexaCore Consultancy Services</p>
+            <p>Leading IT Solutions Provider</p>
+            <p>Est. 2018</p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <p><a href="#" data-section="1">About Us</a></p>
+            <p><a href="#" data-section="2">Services</a></p>
+            <p><a href="#" data-section="3">Portfolio</a></p>
+            <p><a href="#" data-section="4">Clients</a></p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>Email: hello@nexacore.com</p>
+            <p>Phone: +1 (555) 123-4567</p>
+            <p>Address: 123 Tech Street, Silicon Valley, CA 94025</p>
+          </div>
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2024 NexaCore Consultancy Services. All rights reserved.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-dot active" data-section="0"></div>
+    <div class="scroll-dot" data-section="1"></div>
+    <div class="scroll-dot" data-section="2"></div>
+    <div class="scroll-dot" data-section="3"></div>
+    <div class="scroll-dot" data-section="4"></div>
+    <div class="scroll-dot" data-section="5"></div>
+    <div class="scroll-dot" data-section="6"></div>
+  </div>
+
+  <!-- Modals for Portfolio -->
+  <div class="modal" id="modal1">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+      <h3>IT Consultancy for Tech Startup</h3>
+      <img
+        src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="IT Consultancy Project" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+      <p>We provided comprehensive IT strategy and infrastructure setup for a rapidly growing fintech startup. Our
+        solutions included cloud architecture design, security implementation, and scalable development frameworks that
+        supported their growth from 10 to 100+ employees.</p>
+      <p><strong>Technologies:</strong> AWS, Docker, Kubernetes, React, Node.js</p>
+      <p><strong>Duration:</strong> 6 months</p>
+      <p><strong>Result:</strong> 99.9% uptime, 50% cost reduction, successful Series A funding</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal2">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
+      <h3>E-commerce Platform Development</h3>
+      <img
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="E-commerce Platform" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+      <p>Custom e-commerce solution with advanced features including real-time inventory management, integrated payment
+        processing, and AI-powered product recommendations.</p>
+      <p><strong>Technologies:</strong> React, Next.js, Stripe, PostgreSQL, Redis</p>
+      <p><strong>Duration:</strong> 4 months</p>
+      <p><strong>Result:</strong> 300% increase in online sales, 25% higher conversion rate</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal3">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
+      <h3>Healthcare Mobile App</h3>
+      <img
+        src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="Healthcare Mobile App" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+      <p>Cross-platform mobile application for telemedicine and patient management, featuring video consultations,
+        appointment scheduling, and secure medical record storage.</p>
+      <p><strong>Technologies:</strong> React Native, Firebase, WebRTC, HIPAA Compliance</p>
+      <p><strong>Duration:</strong> 8 months</p>
+      <p><strong>Result:</strong> 10,000+ active users, 95% user satisfaction rating</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal4">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
+      <h3>Product Photography Campaign</h3>
+      <img
+        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="Product Photography" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+      <p>Comprehensive product photography and visual content creation for a luxury fashion brand's complete catalog and
+        marketing campaigns.</p>
+      <p><strong>Deliverables:</strong> 500+ product photos, lifestyle shots, social media content</p>
+      <p><strong>Duration:</strong> 3 months</p>
+      <p><strong>Result:</strong> 200% increase in online engagement, 150% boost in sales</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal5">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal5')">&times;</button>
+      <h3>Corporate Website Redesign</h3>
+      <img
+        src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="Corporate Website" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+      <p>Complete website overhaul for a Fortune 500 manufacturing company, including responsive design, CMS
+        implementation, and SEO optimization.</p>
+      <p><strong>Technologies:</strong> WordPress, PHP, MySQL, SEO optimization</p>
+      <p><strong>Duration:</strong> 5 months</p>
+      <p><strong>Result:</strong> 400% increase in organic traffic, 60% faster page load times</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal6">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal6')">&times;</button>
+      <h3>Digital Marketing Campaign</h3>
+      <img
+        src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="Marketing Campaign" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+      <p>Multi-channel digital marketing strategy including social media management, content creation, PPC advertising,
+        and email marketing automation.</p>
+      <p><strong>Channels:</strong> Google Ads, Facebook, Instagram, LinkedIn, Email</p>
+      <p><strong>Duration:</strong> 12 months ongoing</p>
+      <p><strong>Result:</strong> 300% ROI increase, 500% growth in lead generation</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal7">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal7')">&times;</button>
+      <h3>Enterprise Web Application</h3>
+      <img
+        src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="Web Application" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+      <p>Custom CRM system for sales team management, customer relationship tracking, and automated workflow processes.
+      </p>
+      <p><strong>Technologies:</strong> Angular, .NET Core, SQL Server, Azure</p>
+      <p><strong>Duration:</strong> 10 months</p>
+      <p><strong>Result:</strong> 40% increase in sales productivity, 90% reduction in manual tasks</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal8">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal8')">&times;</button>
+      <h3>AI-Powered Analytics Platform</h3>
+      <img
+        src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="AI Platform" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+      <p>Machine learning solution for predictive analytics and business intelligence with real-time data processing and
+        automated insights generation.</p>
+      <p><strong>Technologies:</strong> Python, TensorFlow, Apache Spark, MongoDB</p>
+      <p><strong>Duration:</strong> 12 months</p>
+      <p><strong>Result:</strong> 85% accuracy in predictions, $2M cost savings annually</p>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- Team Grid -->
+  <div class="team-grid">
+    <div class="team-card scale-in">
+      <img
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+        alt="John Doe - IT Consultant" class="team-avatar">
+      <h3 class="team-name">John Doe</h3>
+      <p class="team-role">Senior IT Consultant</p>
+    </div>
+
+    <div class="team-card scale-in">
+      <img
+        src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+        alt="Jane Smith - App Developer" class="team-avatar">
+      <h3 class="team-name">Jane Smith</h3>
+      <p class="team-role">Lead App Developer</p>
+    </div>
+
+    <div class="team-card scale-in">
+      <img
+        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+        alt="Alex Johnson - Web Designer" class="team-avatar">
+      <h3 class="team-name">Alex Johnson</h3>
+      <p class="team-role">Creative Web Designer</p>
+    </div>
+
+    <div class="team-card scale-in">
+      <img
+        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+        alt="Emily Davis - Marketing Specialist" class="team-avatar">
+      <h3 class="team-name">Emily Davis</h3>
+      <p class="team-role">Digital Marketing Specialist</p>
+    </div>
+  </div>
+  </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section bg-primary">
+    <div class="container">
+      <h2 class="section-title fade-in">Our Comprehensive Services</h2>
+
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="IT Consultancy Services" class="service-image">
+          <div class="service-content">
+            <h3 class="service-title">IT Consultancy</h3>
+            <p class="service-description">Expert advice on digital strategy, system integration, and technology
+              optimization to drive business growth. We analyze your current infrastructure and recommend solutions that
+              align with your business objectives.</p>
+          </div>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-code" aria-hidden="true"></i>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Website Design and Development" class="service-image">
+          <div class="service-content">
+            <h3 class="service-title">Website Design & Development</h3>
+            <p class="service-description">Crafting responsive, user-friendly websites tailored to your brand. From
+              e-commerce platforms to corporate sites, we build digital experiences that convert visitors into
+              customers.</p>
+          </div>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Mobile App Development" class="service-image">
+          <div class="service-content">
+            <h3 class="service-title">Web & Mobile App Development</h3>
+            <p class="service-description">Building scalable applications for iOS, Android, and web platforms using
+              modern tech stacks like React, Flutter, and Node.js to deliver exceptional user experiences.</p>
+          </div>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-camera" aria-hidden="true"></i>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Professional Product Photography" class="service-image">
+          <div class="service-content">
+            <h3 class="service-title">Product Photography</h3>
+            <p class="service-description">High-quality professional photoshoots that showcase your products in the best
+              light. Perfect for e-commerce, marketing campaigns, and brand storytelling.</p>
+          </div>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Digital Marketing Services" class="service-image">
+          <div class="service-content">
+            <h3 class="service-title">Digital Marketing</h3>
+            <p class="service-description">Comprehensive digital marketing services including SEO, social media
+              management, content strategy, and paid advertising to boost your online presence and drive results.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="section bg-white">
+    <div class="container">
+      <h2 class="section-title fade-in">Our Portfolio</h2>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-item fade-in" onclick="openModal('modal1')" role="button" tabindex="0"
+          onkeypress="handleKeyPress(event, 'modal1')" aria-label="View E-Commerce Website project details">
+          <img
+            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="E-Commerce Website for Retail Client" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h3 class="portfolio-title">E-Commerce Website for Retail Client</h3>
+            <p class="portfolio-description">Developed a fully responsive e-commerce platform with integrated payment
+              gateways and inventory management.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item fade-in" onclick="openModal('modal2')" role="button" tabindex="0"
+          onkeypress="handleKeyPress(event, 'modal2')" aria-label="View Fitness App project details">
+          <img
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Mobile App for Fitness Brand" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h3 class="portfolio-title">Mobile App for Fitness Brand</h3>
+            <p class="portfolio-description">Created a cross-platform fitness app with workout tracking and social
+              features.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item fade-in" onclick="openModal('modal3')" role="button" tabindex="0"
+          onkeypress="handleKeyPress(event, 'modal3')" aria-label="View IT Consultancy project details">
+          <img
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="IT Consultancy for Startup" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h3 class="portfolio-title">IT Consultancy for Startup</h3>
+            <p class="portfolio-description">Provided strategic consultancy leading to 30% efficiency gains and cost
+              optimization.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item fade-in" onclick="openModal('modal4')" role="button" tabindex="0"
+          onkeypress="handleKeyPress(event, 'modal4')" aria-label="View Fashion Photoshoot project details">
+          <img
+            src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Product Photoshoot for Fashion Line" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h3 class="portfolio-title">Product Photoshoot for Fashion Line</h3>
+            <p class="portfolio-description">Professional photography that increased brand engagement by 200%.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item fade-in" onclick="openModal('modal5')" role="button" tabindex="0"
+          onkeypress="handleKeyPress(event, 'modal5')" aria-label="View Corporate Website project details">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Corporate Website Redesign" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h3 class="portfolio-title">Corporate Website Redesign</h3>
+            <p class="portfolio-description">Modernized UI/UX achieving 60% faster loading times and improved user
+              engagement.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item fade-in" onclick="openModal('modal6')" role="button" tabindex="0"
+          onkeypress="handleKeyPress(event, 'modal6')" aria-label="View Social Media Campaign project details">
+          <img
+            src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Social Media Marketing Campaign" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h3 class="portfolio-title">Social Media Marketing Campaign</h3>
+            <p class="portfolio-description">Comprehensive campaign that boosted brand visibility and follower
+              engagement.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item fade-in" onclick="openModal('modal7')" role="button" tabindex="0"
+          onkeypress="handleKeyPress(event, 'modal7')" aria-label="View Logistics App project details">
+          <img
+            src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Custom Web App for Logistics" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h3 class="portfolio-title">Custom Web App for Logistics</h3>
+            <p class="portfolio-description">Real-time tracking dashboard that reduced operational costs by 25%.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item fade-in" onclick="openModal('modal8')" role="button" tabindex="0"
+          onkeypress="handleKeyPress(event, 'modal8')" aria-label="View Digital Transformation project details">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            alt="Consultancy on Digital Transformation" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <h3 class="portfolio-title">Digital Transformation Consultancy</h3>
+            <p class="portfolio-description">Led comprehensive cloud migration with 50% reduction in manual processes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Modals -->
+  <div id="modal1" class="modal" role="dialog" aria-labelledby="modal1-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal1')" aria-label="Close modal">&times;</button>
+      <h2 id="modal1-title" class="modal-title">E-Commerce Website for Retail Client</h2>
+      <img
+        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+        alt="E-Commerce Website interface showing product catalog and checkout process" class="modal-image">
+      <p class="modal-text">We developed a comprehensive e-commerce platform featuring responsive design, secure payment
+        gateways, advanced inventory management, and customer analytics. The platform includes features like wishlist
+        functionality, product reviews, advanced search filters, and mobile-optimized checkout. Our solution increased
+        online sales by 150% within the first quarter and improved user engagement metrics significantly.</p>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal" role="dialog" aria-labelledby="modal2-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal2')" aria-label="Close modal">&times;</button>
+      <h2 id="modal2-title" class="modal-title">Mobile App for Fitness Brand</h2>
+      <img
+        src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+        alt="Fitness mobile app showing workout tracking and social features" class="modal-image">
+      <p class="modal-text">Created a cross-platform fitness application with comprehensive workout tracking, nutrition
+        planning, social features, and personalized coaching. The app includes features like exercise video tutorials,
+        progress tracking, community challenges, and integration with wearable devices. The app garnered 50,000+
+        downloads in its first month and maintains a 4.8-star rating across app stores.</p>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal" role="dialog" aria-labelledby="modal3-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal3')" aria-label="Close modal">&times;</button>
+      <h2 id="modal3-title" class="modal-title">IT Consultancy for Growing Startup</h2>
+      <img
+        src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+        alt="Business meeting discussing IT strategy and digital transformation" class="modal-image">
+      <p class="modal-text">Provided comprehensive IT strategy consulting for a rapidly growing startup, including
+        infrastructure optimization, security implementation, scalability planning, and team training. Our
+        recommendations included cloud migration strategy, automated deployment pipelines, and security best practices.
+        Results included 30% efficiency gains, 40% cost reduction, and improved system reliability.</p>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal" role="dialog" aria-labelledby="modal4-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal4')" aria-label="Close modal">&times;</button>
+      <h2 id="modal4-title" class="modal-title">Product Photoshoot for Fashion Line</h2>
+      <img
+        src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+        alt="Professional fashion photography showcasing clothing line in studio setting" class="modal-image">
+      <p class="modal-text">Executed professional product photography for a fashion brand's new collection, including
+        studio setup, professional lighting, styling coordination, and post-processing. The comprehensive shoot covered
+        lifestyle photos, product details, and marketing campaign visuals. The images were used across all marketing
+        channels and resulted in a 200% increase in social media engagement and higher conversion rates.</p>
+    </div>
+  </div>
+
+  <div id="modal5" class="modal" role="dialog" aria-labelledby="modal5-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal5')" aria-label="Close modal">&times;</button>
+      <h2 id="modal5-title" class="modal-title">Corporate Website Redesign</h2>
+      <img
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+        alt="Modern corporate website design showing clean layout and professional branding" class="modal-image">
+      <p class="modal-text">Completely redesigned and developed a corporate website with modern UI/UX principles,
+        improved performance optimization, and enhanced user experience. The project included brand identity refresh,
+        content strategy, SEO optimization, and mobile-first design. The new site achieved 60% faster loading times, 80%
+        increase in user engagement, and significantly improved search engine rankings.</p>
+    </div>
+  </div>
+
+  <div id="modal6" class="modal" role="dialog" aria-labelledby="modal6-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal6')" aria-label="Close modal">&times;</button>
+      <h2 id="modal6-title" class="modal-title">Social Media Marketing Campaign</h2>
+      <img
+        src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+        alt="Social media marketing analytics dashboard showing campaign performance" class="modal-image">
+      <p class="modal-text">Designed and executed a comprehensive social media marketing campaign across multiple
+        platforms, including content creation, community management, influencer partnerships, and paid advertising
+        strategies. The campaign featured engaging visual content, interactive polls, user-generated content
+        initiatives, and targeted ad campaigns. Results included 300% increase in followers, 250% boost in engagement,
+        and significant ROI improvement.</p>
+    </div>
+  </div>
+
+  <div id="modal7" class="modal" role="dialog" aria-labelledby="modal7-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal7')" aria-label="Close modal">&times;</button>
+      <h2 id="modal7-title" class="modal-title">Custom Web App for Logistics</h2>
+      <img
+        src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+        alt="Logistics management dashboard showing real-time tracking and analytics" class="modal-image">
+      <p class="modal-text">Developed a custom web application for logistics management featuring real-time tracking,
+        route optimization, automated reporting, and predictive analytics. The solution includes GPS integration,
+        automated notifications, performance dashboards, and mobile compatibility. The application reduced operational
+        costs by 25%, improved delivery accuracy by 95%, and enhanced customer satisfaction significantly.</p>
+    </div>
+  </div>
+
+  <div id="modal8" class="modal" role="dialog" aria-labelledby="modal8-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal8')" aria-label="Close modal">&times;</button>
+      <h2 id="modal8-title" class="modal-title">Digital Transformation Consultancy</h2>
+      <img
+        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+        alt="Digital transformation meeting with cloud architecture diagrams and strategy planning" class="modal-image">
+      <p class="modal-text">Led a comprehensive digital transformation initiative including cloud migration strategy,
+        process automation, digital workflow implementation, and staff training programs. The project encompassed
+        infrastructure assessment, security auditing, scalability planning, and change management. The transformation
+        resulted in 50% reduction in manual processes, significant cost savings, improved data security, and enhanced
+        operational efficiency.</p>
+    </div>
+  </div>
+
+  <!-- Clients Section -->
+  <section id="clients" class="section bg-primary">
+    <div class="container">
+      <h2 class="section-title fade-in">Our Valued Clients</h2>
+
+      <div class="clients-carousel">
+        <div class="client-logos fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+            alt="TechCorp - Leading Technology Company" class="client-logo">
+          <img
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+            alt="InnovateX - Innovation Solutions" class="client-logo">
+          <img
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+            alt="FitLife - Health and Wellness Brand" class="client-logo">
+          <img
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+            alt="FashionHub - Premium Fashion Retailer" class="client-logo">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+            alt="StartupX - Emerging Business Solutions" class="client-logo">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+            alt="GlobalTech - International Technology Services" class="client-logo">
+        </div>
+      </div>
+
+      <div class="testimonials">
+        <div class="testimonial fade-in">
+          <blockquote class="testimonial-text">"NexaCore's consultancy completely transformed our IT infrastructure.
+            Their strategic approach and technical expertise helped us modernize our systems while reducing costs. The
+            team's professionalism and dedication exceeded our expectations."</blockquote>
+          <div class="testimonial-author">Mike Ross, CEO - TechCorp</div>
+        </div>
+
+        <div class="testimonial fade-in">
+          <blockquote class="testimonial-text">"Outstanding app development service! The fitness app they created for us
+            has become incredibly popular with our users. The attention to detail and user experience design is
+            exceptional. Highly recommend their services."</blockquote>
+          <div class="testimonial-author">Sarah Lee, Founder - FitLife</div>
+        </div>
+
+        <div class="testimonial fade-in">
+          <blockquote class="testimonial-text">"The professional photoshoot elevated our entire product line. The
+            quality of images and creative direction was beyond what we imagined. Our marketing campaigns have never
+            looked better, and sales have increased significantly."</blockquote>
+          <div class="testimonial-author">Tom Hale, Marketing Director - FashionHub</div>
+        </div>
+
+        <div class="testimonial fade-in">
+          <blockquote class="testimonial-text">"NexaCore's marketing strategies drove incredible growth for our startup.
+            Their data-driven approach and creative campaigns helped us reach our target audience effectively. The ROI
+            on our marketing investment has been phenomenal."</blockquote>
+          <div class="testimonial-author">Lisa Green, Owner - StartupX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section id="vision" class="section vision">
+    <div class="vision-background"></div>
+    <div class="container">
+      <div class="vision-content">
+        <h2 class="section-title fade-in">Our Vision for the Future</h2>
+        <p class="vision-text fade-in">At NexaCore, our vision is to be the premier IT consultancy partner,
+          revolutionizing businesses through innovative website and app development, stunning product photography, and
+          data-driven marketing strategies. We aim to empower global enterprises with cutting-edge technology solutions
+          that foster sustainable growth, competitive advantage, and digital excellence. Our commitment extends beyond
+          project delivery – we strive to build lasting partnerships that transform industries and shape the future of
+          business technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section fade-in">
+          <h3>NexaCore Consultancy Services</h3>
+          <p>Elevating Your Business Through Expert IT Consultancy and Innovative Solutions</p>
+          <p>Transform your digital presence with our comprehensive suite of services designed to drive growth and
+            success in today's competitive landscape.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Follow us on Facebook">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow us on Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Connect with us on LinkedIn">
+              <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow us on Instagram">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section fade-in">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-users" aria-hidden="true"></i> About Us</a></li>
+            <li><a href="#services"><i class="fas fa-cogs" aria-hidden="true"></i> Services</a></li>
+            <li><a href="#portfolio"><i class="fas fa-briefcase" aria-hidden="true"></i> Portfolio</a></li>
+            <li><a href="#clients"><i class="fas fa-handshake" aria-hidden="true"></i> Clients</a></li>
+            <li><a href="#vision"><i class="fas fa-eye" aria-hidden="true"></i> Vision</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section fade-in">
+          <h3>Our Services</h3>
+          <ul class="footer-links">
+            <li><a href="#services"><i class="fas fa-lightbulb" aria-hidden="true"></i> IT Consultancy</a></li>
+            <li><a href="#services"><i class="fas fa-code" aria-hidden="true"></i> Web Development</a></li>
+            <li><a href="#services"><i class="fas fa-mobile-alt" aria-hidden="true"></i> App Development</a></li>
+            <li><a href="#services"><i class="fas fa-camera" aria-hidden="true"></i> Product Photography</a></li>
+            <li><a href="#services"><i class="fas fa-chart-line" aria-hidden="true"></i> Digital Marketing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section fade-in">
+          <h3>Contact Information</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </div>
+            <div>
+              <strong>Email:</strong><br>
+              <a href="mailto:info@nexacore.com">info@nexacore.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+            </div>
+            <div>
+              <strong>Phone:</strong><br>
+              <a href="tel:+11234567890">+1 (123) 456-7890</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            </div>
+            <div>
+              <strong>Address:</strong><br>
+              123 Tech Street<br>
+              Innovation City, USA
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 NexaCore Consultancy Services. All rights reserved. | Designed with excellence for digital
+          transformation.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+    // Global variables
+    let currentSection = 0;
+    const totalSections = 7;
+    let isScrolling = false;
+    let isMobile = window.innerWidth <= 768;
+
+    // DOM elements
+    const loading = document.getElementById('loading');
+    const horizontalScroll = document.getElementById('horizontalScroll');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const scrollDots = document.querySelectorAll('.scroll-dot');
+
+    // Loading screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loading.classList.add('hidden');
+        initializeHorizontalScroll();
+        initializeAnimations();
+      }, 1000);
+    });
+
+    // Initialize horizontal scrolling
+    function initializeHorizontalScroll() {
+      if (isMobile) {
+        // Enable native horizontal scroll on mobile
+        const container = document.querySelector('.horizontal-container');
+        container.style.overflowX = 'auto';
+        container.style.scrollSnapType = 'x mandatory';
+
+        // Add scroll snap to sections
+        document.querySelectorAll('.section').forEach(section => {
+          section.style.scrollSnapAlign = 'start';
+        });
+
+        return;
+      }
+
+      // Desktop horizontal scroll with GSAP
+      const sections = document.querySelectorAll('.section');
+      const totalWidth = (totalSections - 1) * window.innerWidth;
+
+      // Set up ScrollTrigger for horizontal scroll
+      gsap.to(horizontalScroll, {
+        x: -totalWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".horizontal-container",
+          pin: true,
+          scrub: 1,
+          end: () => "+=" + totalWidth,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const newSection = Math.round(progress * (totalSections - 1));
+            if (newSection !== currentSection) {
+              updateCurrentSection(newSection);
+            }
+          }
+        }
+      });
+
+      // Add parallax effects to backgrounds
+      sections.forEach((section, index) => {
+        const bg = section.querySelector('.hero, .vision');
+        if (bg) {
+          gsap.to(bg, {
+            xPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "left right",
+              end: "right left",
+              scrub: true
+            }
+          });
+        }
+      });
+    }
+
+    // Initialize animations
+    function initializeAnimations() {
+      // Hero section initial animations
+      const heroTimeline = gsap.timeline({ delay: 0.5 });
+      heroTimeline
+        .to('.hero-title', {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out"
+        })
+        .to('.hero-subtitle', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        }, "-=0.5")
+        .to('.hero .cta-button', {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "back.out(1.7)"
+        }, "-=0.3")
+        .to('.hero .scroll-indicator', {
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out"
+        }, "-=0.2");
+
+      // Fade in animations
+      gsap.set('.fade-in', { opacity: 0, y: 30 });
+      gsap.set('.scale-in', { opacity: 0, scale: 0.8 });
+      gsap.set('.slide-left', { opacity: 0, x: -50 });
+      gsap.set('.slide-right', { opacity: 0, x: 50 });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -10% 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateElement(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document.querySelectorAll('.fade-in, .scale-in, .slide-left, .slide-right').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Staggered animations for cards
+      gsap.from('.service-card', {
+        duration: 0.6,
+        y: 50,
+        opacity: 0,
+        stagger: 0.1,
+        delay: 1,
+        ease: "back.out(1.7)"
+      });
+
+      gsap.from('.team-card', {
+        duration: 0.6,
+        scale: 0.8,
+        opacity: 0,
+        stagger: 0.15,
+        delay: 1.2,
+        ease: "back.out(1.7)"
+      });
+
+      gsap.from('.portfolio-item', {
+        duration: 0.6,
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        delay: 1.5,
+        ease: "power2.out"
+      });
+    }
+
+    // Animate individual elements
+    function animateElement(element) {
+      if (element.classList.contains('fade-in')) {
+        gsap.to(element, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      } else if (element.classList.contains('scale-in')) {
+        gsap.to(element, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out(1.7)"
+        });
+      } else if (element.classList.contains('slide-left')) {
+        gsap.to(element, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      } else if (element.classList.contains('slide-right')) {
+        gsap.to(element, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      }
+    }
+
+    // Update current section
+    function updateCurrentSection(newSection) {
+      currentSection = newSection;
+
+      // Update scroll dots
+      scrollDots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSection);
+      });
+
+      // Update navigation active state
+      document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (parseInt(link.dataset.section) === currentSection) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Navigation functionality
+    function scrollToSection(sectionIndex) {
+      if (isScrolling || sectionIndex === currentSection) return;
+
+      isScrolling = true;
+
+      if (isMobile) {
+        // Mobile: use native scroll
+        const targetX = sectionIndex * window.innerWidth;
+        document.querySelector('.horizontal-container').scrollTo({
+          left: targetX,
+          behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+          updateCurrentSection(sectionIndex);
+          isScrolling = false;
+        }, 800);
+      } else {
+        // Desktop: use GSAP
+        const targetX = -sectionIndex * window.innerWidth;
+
+        gsap.to(horizontalScroll, {
+          x: targetX,
+          duration: 1,
+          ease: "power2.inOut",
+          onComplete: () => {
+            updateCurrentSection(sectionIndex);
+            isScrolling = false;
+          }
+        });
+      }
+    }
+
+    // Mobile menu toggle
+    if (menuToggle && mobileNav) {
+      menuToggle.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+
+        // Animate hamburger lines
+        const lines = menuToggle.querySelectorAll('.menu-line');
+        if (mobileNav.classList.contains('active')) {
+          gsap.to(lines[0], { rotation: 45, y: 6, duration: 0.3 });
+          gsap.to(lines[1], { opacity: 0, duration: 0.3 });
+          gsap.to(lines[2], { rotation: -45, y: -6, duration: 0.3 });
+        } else {
+          gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3 });
+          gsap.to(lines[1], { opacity: 1, duration: 0.3 });
+          gsap.to(lines[2], { rotation: 0, y: 0, duration: 0.3 });
+        }
+      });
+    }
+
+    // Navigation event listeners
+    document.addEventListener('click', (e) => {
+      const sectionAttr = e.target.dataset.section;
+      if (sectionAttr !== undefined) {
+        e.preventDefault();
+        scrollToSection(parseInt(sectionAttr));
+
+        // Close mobile menu if open
+        if (mobileNav && mobileNav.classList.contains('active')) {
+          mobileNav.classList.remove('active');
+          const lines = menuToggle.querySelectorAll('.menu-line');
+          gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3 });
+          gsap.to(lines[1], { opacity: 1, duration: 0.3 });
+          gsap.to(lines[2], { rotation: 0, y: 0, duration: 0.3 });
+        }
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' && currentSection > 0) {
+        scrollToSection(currentSection - 1);
+      } else if (e.key === 'ArrowRight' && currentSection < totalSections - 1) {
+        scrollToSection(currentSection + 1);
+      }
+    });
+
+    // Mouse wheel navigation (desktop only)
+    if (!isMobile) {
+      let wheelTimeout;
+      document.addEventListener('wheel', (e) => {
+        e.preventDefault();
+
+        clearTimeout(wheelTimeout);
+        wheelTimeout = setTimeout(() => {
+          if (e.deltaY > 0 && currentSection < totalSections - 1) {
+            scrollToSection(currentSection + 1);
+          } else if (e.deltaY < 0 && currentSection > 0) {
+            scrollToSection(currentSection - 1);
+          }
+        }, 50);
+      }, { passive: false });
+    }
+
+    // Modal functionality
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        gsap.fromTo(modal,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.3 }
+        );
+
+        gsap.fromTo(modal.querySelector('.modal-content'),
+          { scale: 0.7, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }
+        );
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        gsap.to(modal, {
+          opacity: 0,
+          duration: 0.3,
+          onComplete: () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+    }
+
+    // Close modal on background click
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) {
+        const modalId = e.target.id;
+        closeModal(modalId);
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const activeModal = document.querySelector('.modal.active');
+        if (activeModal) {
+          closeModal(activeModal.id);
+        }
+      }
+    });
+
+    // Hover animations for service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -10,
+          scale: 1.05,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    // Hover animations for portfolio items
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        gsap.to(item, {
+          scale: 1.02,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        gsap.to(item, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    // Resize handler
+    function handleResize() {
+      const wasMobile = isMobile;
+      isMobile = window.innerWidth <= 768;
+
+      if (wasMobile !== isMobile) {
+        // Refresh ScrollTrigger on device type change
+        ScrollTrigger.refresh();
+
+        // Reinitialize if needed
+        if (!isMobile) {
+          initializeHorizontalScroll();
+        }
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // Touch/swipe handling for mobile
+    if (isMobile) {
+      let startX = 0;
+      let startY = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      });
+
+      document.addEventListener('touchend', (e) => {
+        if (!startX || !startY) return;
+
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+
+        const deltaX = startX - endX;
+        const deltaY = startY - endY;
+
+        // Only handle horizontal swipes
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+          if (deltaX > 0 && currentSection < totalSections - 1) {
+            scrollToSection(currentSection + 1);
+          } else if (deltaX < 0 && currentSection > 0) {
+            scrollToSection(currentSection - 1);
+          }
+        }
+
+        startX = 0;
+        startY = 0;
+      });
+    }
+
+    // Performance optimization
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) {
+      // Disable animations for users who prefer reduced motion
+      gsap.set('*', { animation: 'none', transition: 'none' });
+    }
+
+    // Lazy loading for images
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            img.classList.remove('lazy');
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+
+    // Make functions globally available
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.scrollToSection = scrollToSection;
+
+    // Debug info (remove in production)
+    console.log('NexaCore website initialized successfully');
+    console.log('Total sections:', totalSections);
+    console.log('Mobile mode:', isMobile);
+  </script>
+  y: 0,
+  duration: 1.2,
+  ease: 'power3.out'
+  })
+  .to('.hero-subtitle', {
+  opacity: 1,
+  y: 0,
+  duration: 1,
+  ease: 'power2.out'
+  }, '-=0.8')
+  .to('.hero-cta', {
+  opacity: 1,
+  y: 0,
+  duration: 1,
+  ease: 'back.out(1.7)'
+  }, '-=0.6');
+
+  // Scroll-triggered animations
+  setupScrollAnimations();
+
+  // Parallax effects
+  setupParallaxEffects();
+  }
+
+  // Enhanced scroll animations
+  function setupScrollAnimations() {
+  // Fade in animations
+  gsap.utils.toArray('.fade-in').forEach(element => {
+  gsap.fromTo(element,
+  {
+  opacity: 0,
+  y: 60
+  },
+  {
+  opacity: 1,
+  y: 0,
+  duration: 1.2,
+  ease: 'power3.out',
+  scrollTrigger: {
+  trigger: element,
+  start: 'top 85%',
+  end: 'bottom 15%',
+  toggleActions: 'play none none reverse'
+  }
+  }
+  );
+  });
+
+  // Slide from left
+  gsap.utils.toArray('.fade-in-left').forEach(element => {
+  gsap.fromTo(element,
+  {
+  opacity: 0,
+  x: -80
+  },
+  {
+  opacity: 1,
+  x: 0,
+  duration: 1.2,
+  ease: 'power3.out',
+  scrollTrigger: {
+  trigger: element,
+  start: 'top 85%',
+  toggleActions: 'play none none reverse'
+  }
+  }
+  );
+  });
+
+  // Slide from right
+  gsap.utils.toArray('.fade-in-right').forEach(element => {
+  gsap.fromTo(element,
+  {
+  opacity: 0,
+  x: 80
+  },
+  {
+  opacity: 1,
+  x: 0,
+  duration: 1.2,
+  ease: 'power3.out',
+  scrollTrigger: {
+  trigger: element,
+  start: 'top 85%',
+  toggleActions: 'play none none reverse'
+  }
+  }
+  );
+  });
+
+  // Scale in animations
+  gsap.utils.toArray('.scale-in').forEach(element => {
+  gsap.fromTo(element,
+  {
+  opacity: 0,
+  scale: 0.8
+  },
+  {
+  opacity: 1,
+  scale: 1,
+  duration: 1.2,
+  ease: 'back.out(1.7)',
+  scrollTrigger: {
+  trigger: element,
+  start: 'top 85%',
+  toggleActions: 'play none none reverse'
+  }
+  }
+  );
+  });
+
+  // Stagger team cards
+  gsap.fromTo('.team-card',
+  {
+  opacity: 0,
+  y: 50
+  },
+  {
+  opacity: 1,
+  y: 0,
+  duration: 0.8,
+  stagger: 0.2,
+  ease: 'power2.out',
+  scrollTrigger: {
+  trigger: '.team-grid',
+  start: 'top 80%'
+  }
+  }
+  );
+
+  // Stagger service cards
+  gsap.fromTo('.service-card',
+  {
+  opacity: 0,
+  y: 50
+  },
+  {
+  opacity: 1,
+  y: 0,
+  duration: 0.8,
+  stagger: 0.15,
+  ease: 'power2.out',
+  scrollTrigger: {
+  trigger: '.services-grid',
+  start: 'top 80%'
+  }
+  }
+  );
+
+  // Stagger portfolio items
+  gsap.fromTo('.portfolio-item',
+  {
+  opacity: 0,
+  scale: 0.9
+  },
+  {
+  opacity: 1,
+  scale: 1,
+  duration: 0.8,
+  stagger: 0.1,
+  ease: 'power2.out',
+  scrollTrigger: {
+  trigger: '.portfolio-grid',
+  start: 'top 80%'
+  }
+  }
+  );
+  }
+
+  // Parallax effects
+  function setupParallaxEffects() {
+  // Hero parallax
+  gsap.to('.hero-background', {
+  yPercent: -30,
+  ease: 'none',
+  scrollTrigger: {
+  trigger: '.hero',
+  start: 'top bottom',
+  end: 'bottom top',
+  scrub: 1
+  }
+  });
+
+  // Vision parallax
+  gsap.to('.vision-background', {
+  yPercent: -20,
+  ease: 'none',
+  scrollTrigger: {
+  trigger: '.vision',
+  start: 'top bottom',
+  end: 'bottom top',
+  scrub: 1
+  }
+  });
+  }
+
+  // Navigation functionality
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  const header = document.getElementById('header');
+
+  hamburger.addEventListener('click', () => {
+  const isActive = hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded', isActive);
+
+  // Prevent body scroll when menu is open
+  document.body.style.overflow = isActive ? 'hidden' : '';
+  });
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+  hamburger.classList.remove('active');
+  navMenu.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  });
+  });
+
+  // Header scroll effect
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function updateHeader() {
+  const scrollY = window.scrollY;
+
+  if (scrollY > 100) {
+  header.classList.add('scrolled');
+  } else {
+  header.classList.remove('scrolled');
+  }
+
+  ticking = false;
+  }
+
+  function requestTick() {
+  if (!ticking) {
+  requestAnimationFrame(updateHeader);
+  ticking = true;
+  }
+  }
+
+  window.addEventListener('scroll', requestTick);
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+  e.preventDefault();
+  const target = document.querySelector(this.getAttribute('href'));
+
+  if (target) {
+  const offsetTop = target.offsetTop - 80;
+  window.scrollTo({
+  top: offsetTop,
+  behavior: 'smooth'
+  });
+  }
+  });
+  });
+
+  // Hero slider functionality
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+  slides.forEach((slide, i) => {
+  slide.classList.remove('active');
+  if (i === index) {
+  slide.classList.add('active');
+  }
+  });
+  }
+
+  function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  showSlide(currentSlide);
+  }
+
+  // Auto-advance slides with pause on hover
+  let slideInterval = setInterval(nextSlide, 4000);
+
+  const slider = document.querySelector('.hero-slider');
+  slider.addEventListener('mouseenter', () => {
+  clearInterval(slideInterval);
+  });
+
+  slider.addEventListener('mouseleave', () => {
+  slideInterval = setInterval(nextSlide, 4000);
+  });
+
+  // Modal functionality with improved accessibility
+  function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  const modalContent = modal.querySelector('.modal-content');
+
+  modal.style.display = 'block';
+  modal.setAttribute('aria-hidden', 'false');
+
+  // Focus trap
+  const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea,
+  [tabindex]:not([tabindex="-1"])');
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  firstElement?.focus();
+
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+
+  if (isAnimationEnabled) {
+  gsap.fromTo(modal,
+  { opacity: 0 },
+  { opacity: 1, duration: 0.3 }
+  );
+  gsap.fromTo(modalContent,
+  { scale: 0.8, y: 50 },
+  { scale: 1, y: 0, duration: 0.3, ease: 'back.out(1.7)' }
+  );
+  }
+
+  // Handle tab navigation
+  modal.addEventListener('keydown', function (e) {
+  if (e.key === 'Tab') {
+  if (e.shiftKey) {
+  if (document.activeElement === firstElement) {
+  e.preventDefault();
+  lastElement?.focus();
+  }
+  } else {
+  if (document.activeElement === lastElement) {
+  e.preventDefault();
+  firstElement?.focus();
+  }
+  }
+  } else if (e.key === 'Escape') {
+  closeModal(modalId);
+  }
+  });
+  }
+
+  function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+
+  if (isAnimationEnabled) {
+  gsap.to(modal, {
+  opacity: 0,
+  duration: 0.3,
+  onComplete: () => {
+  modal.style.display = 'none';
+  }
+  });
+  } else {
+  modal.style.display = 'none';
+  }
+  }
+
+  // Keyboard support for portfolio items
+  function handleKeyPress(event, modalId) {
+  if (event.key === 'Enter' || event.key === ' ') {
+  event.preventDefault();
+  openModal(modalId);
+  }
+  }
+
+  // Close modal when clicking outside
+  window.addEventListener('click', (e) => {
+  if (e.target.classList.contains('modal')) {
+  const modalId = e.target.id;
+  closeModal(modalId);
+  }
+  });
+
+  // Enhanced hover animations for cards
+  function setupHoverAnimations() {
+  if (!isAnimationEnabled) return;
+
+  // Service cards
+  document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+  gsap.to(card, {
+  y: -15,
+  scale: 1.02,
+  duration: 0.3,
+  ease: 'power2.out'
+  });
+
+  const icon = card.querySelector('.service-icon');
+  if (icon) {
+  gsap.to(icon, {
+  opacity: 1,
+  scale: 1,
+  duration: 0.3,
+  ease: 'back.out(1.7)'
+  });
+  }
+  });
+
+  card.addEventListener('mouseleave', () => {
+  gsap.to(card, {
+  y: 0,
+  scale: 1,
+  duration: 0.3,
+  ease: 'power2.out'
+  });
+
+  const icon = card.querySelector('.service-icon');
+  if (icon) {
+  gsap.to(icon, {
+  opacity: 0,
+  scale: 0.8,
+  duration: 0.3
+  });
+  }
+  });
+  });
+
+  // Team cards
+  document.querySelectorAll('.team-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+  gsap.to(card, {
+  y: -10,
+  duration: 0.3,
+  ease: 'power2.out'
+  });
+  });
+
+  card.addEventListener('mouseleave', () => {
+  gsap.to(card, {
+  y: 0,
+  duration: 0.3,
+  ease: 'power2.out'
+  });
+  });
+  });
+
+  // Portfolio items
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+  item.addEventListener('mouseenter', () => {
+  gsap.to(item, {
+  scale: 1.05,
+  duration: 0.3,
+  ease: 'power2.out'
+  });
+  });
+
+  item.addEventListener('mouseleave', () => {
+  gsap.to(item, {
+  scale: 1,
+  duration: 0.3,
+  ease: 'power2.out'
+  });
+  });
+  });
+
+  // CTA Button
+  const ctaButton = document.querySelector('.btn-primary');
+  if (ctaButton) {
+  ctaButton.addEventListener('mouseenter', function () {
+  gsap.to(this, {
+  scale: 1.05,
+  y: -3,
+  duration: 0.3,
+  ease: 'power2.out'
+  });
+  });
+
+  ctaButton.addEventListener('mouseleave', function () {
+  gsap.to(this, {
+  scale: 1,
+  y: 0,
+  duration: 0.3,
+  ease: 'power2.out'
+  });
+  });
+  }
+  }
+
+  // Intersection Observer for performance
+  const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+  if (entry.isIntersecting) {
+  entry.target.classList.add('in-view');
+  }
+  });
+  }, observerOptions);
+
+  // Observe elements for animation triggers
+  document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .slide-up').forEach(el => {
+  observer.observe(el);
+  });
+
+  // Text animation for hero title
+  function animateHeroText() {
+  if (!isAnimationEnabled) return;
+
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+  gsap.from(heroTitle, {
+  text: "",
+  duration: 2,
+  ease: "power2.out",
+  delay: 0.5
+  });
+  }
+  }
+
+  // Initialize hover animations after page load
+  window.addEventListener('load', () => {
+  setupHoverAnimations();
+  });
+
+  // Utility functions
+  function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+  const later = () => {
+  clearTimeout(timeout);
+  func(...args);
+  };
+  clearTimeout(timeout);
+  timeout = setTimeout(later, wait);
+  };
+  }
+
+  // Resize handler
+  const handleResize = debounce(() => {
+  ScrollTrigger.refresh();
+  }, 250);
+
+  window.addEventListener('resize', handleResize);
+
+  // Page visibility API for performance
+  document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+  // Pause animations when page is not visible
+  gsap.globalTimeline.pause();
+  } else {
+  // Resume animations when page becomes visible
+  gsap.globalTimeline.play();
+  }
+  });
+
+  // Preload critical images
+  function preloadImages() {
+  const imageUrls = [
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'
+  ];
+
+  imageUrls.forEach(url => {
+  const img = new Image();
+  img.src = url;
+  });
+  }
+
+  // Initialize on DOM content loaded
+  document.addEventListener('DOMContentLoaded', () => {
+  preloadImages();
+
+  // Initialize animations for elements already in view
+  document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(element => {
+  if (!isAnimationEnabled) {
+  element.style.opacity = '1';
+  element.style.transform = 'none';
+  }
+  });
+  });
+
+  // Global error handler
+  window.addEventListener('error', (e) => {
+  console.warn('Animation error caught:', e.error);
+  });
+
+  // Make functions globally available
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+  window.handleKeyPress = handleKeyPress;
+  </script>
+</body>
+
+</html>
