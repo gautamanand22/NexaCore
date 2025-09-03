@@ -1,13 +1,17 @@
 {
-  "name": "my-ub-project",
+  "name": "nexacore-consultancy",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "NexaCore Consultancy Services - IT Solutions",
+  "keywords": ["consultancy", "IT", "website", "business", "react"],
+  "author": "NexaCore Team",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
