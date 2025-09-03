@@ -4,7 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "description": "NexaCore Consultancy Services - IT Solutions",
-  "keywords": ["consultancy", "IT", "website", "business", "react"],
+  "keywords": [
+    "consultancy",
+    "IT",
+    "website",
+    "business",
+    "react"
+  ],
   "author": "NexaCore Team",
   "scripts": {
     "dev": "vite",
