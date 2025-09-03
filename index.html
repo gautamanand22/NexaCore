@@ -101,8 +101,8 @@
       background-color: var(--bg-beige);
       color: var(--text-dark);
       overflow-x: hidden;
-      overflow-y: hidden;
-      height: 100vh;
+      overflow-y: auto;
+      height: auto;
       position: relative;
     }
 
@@ -254,31 +254,24 @@
       transform: scale(1.1);
     }
 
-    /* Horizontal Container */
-    .horizontal-container {
-      position: fixed;
-      top: 0;
-      left: 0;
+    /* Vertical Container */
+    .vertical-container {
       width: 100%;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
     }
 
-    .horizontal-scroll {
-      display: flex;
-      height: 100vh;
-      width: max-content;
-      will-change: transform;
+    .vertical-scroll {
+      width: 100%;
     }
 
     .section {
-      height: 100vh;
-      width: 100vw;
+      min-height: 100vh;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      flex-shrink: 0;
+      padding: var(--space-xl) 0;
     }
 
     /* Hero Section */
@@ -801,18 +794,18 @@
 
     .scroll-arrow {
       font-size: 1.2rem;
-      animation: bounceRight 2s ease-in-out infinite;
+      animation: bounceDown 2s ease-in-out infinite;
     }
 
-    @keyframes bounceRight {
+    @keyframes bounceDown {
 
       0%,
       100% {
-        transform: translateX(0);
+        transform: translateY(0);
       }
 
       50% {
-        transform: translateX(10px);
+        transform: translateY(10px);
       }
     }
 
@@ -861,13 +854,13 @@
         gap: var(--space-lg);
       }
 
-      /* Mobile horizontal scroll */
-      .horizontal-scroll {
-        width: calc(100vw * 7);
-        /* 7 sections */
+      /* Mobile vertical scroll */
+      .vertical-scroll {
+        width: 100%;
       }
 
       .section {
+        min-height: 100vh;
         padding: var(--space-lg);
       }
 
@@ -959,19 +952,16 @@
 
     /* Smooth scrolling for mobile */
     @media (max-width: 768px) {
-      .horizontal-container {
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
+      body {
+        overflow-y: auto;
       }
 
-      .horizontal-scroll {
-        scroll-snap-align: start;
+      .vertical-scroll {
+        width: 100%;
       }
 
       .section {
-        scroll-snap-align: start;
+        min-height: 100vh;
       }
     }
   </style>
@@ -2191,8 +2181,8 @@
   </nav>
 
   <!-- Horizontal Container -->
-  <div class="horizontal-container">
-    <div class="horizontal-scroll" id="horizontalScroll">
+  <div class="vertical-container">
+    <div class="vertical-scroll" id="verticalScroll">
 
       <!-- Hero Section -->
       <section class="section hero">
@@ -2203,7 +2193,7 @@
         </div>
         <div class="scroll-indicator">
           <span>Scroll to explore</span>
-          <div class="scroll-arrow">→</div>
+          <div class="scroll-arrow">↓</div>
         </div>
       </section>
 
@@ -3151,7 +3141,7 @@
 
     // DOM elements
     const loading = document.getElementById('loading');
-    const horizontalScroll = document.getElementById('horizontalScroll');
+    const verticalScroll = document.getElementById('verticalScroll');
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
     const scrollDots = document.querySelectorAll('.scroll-dot');
@@ -3160,61 +3150,39 @@
     window.addEventListener('load', () => {
       setTimeout(() => {
         loading.classList.add('hidden');
-        initializeHorizontalScroll();
+        initializeVerticalScroll();
         initializeAnimations();
       }, 1000);
     });
 
-    // Initialize horizontal scrolling
-    function initializeHorizontalScroll() {
-      if (isMobile) {
-        // Enable native horizontal scroll on mobile
-        const container = document.querySelector('.horizontal-container');
-        container.style.overflowX = 'auto';
-        container.style.scrollSnapType = 'x mandatory';
-
-        // Add scroll snap to sections
-        document.querySelectorAll('.section').forEach(section => {
-          section.style.scrollSnapAlign = 'start';
+    // Initialize vertical scrolling
+    function initializeVerticalScroll() {
+      // Enable smooth scrolling
+      document.documentElement.style.scrollBehavior = 'smooth';
+      
+      // Initialize scroll-triggered animations
+      const sections = document.querySelectorAll('.section');
+      
+      // Set up ScrollTrigger for each section
+      sections.forEach((section, index) => {
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 80%",
+          end: "bottom 20%",
+          onEnter: () => updateCurrentSection(index),
+          onEnterBack: () => updateCurrentSection(index)
         });
 
-        return;
-      }
-
-      // Desktop horizontal scroll with GSAP
-      const sections = document.querySelectorAll('.section');
-      const totalWidth = (totalSections - 1) * window.innerWidth;
-
-      // Set up ScrollTrigger for horizontal scroll
-      gsap.to(horizontalScroll, {
-        x: -totalWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".horizontal-container",
-          pin: true,
-          scrub: 1,
-          end: () => "+=" + totalWidth,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            const newSection = Math.round(progress * (totalSections - 1));
-            if (newSection !== currentSection) {
-              updateCurrentSection(newSection);
-            }
-          }
-        }
-      });
-
-      // Add parallax effects to backgrounds
-      sections.forEach((section, index) => {
+        // Add parallax effects to backgrounds
         const bg = section.querySelector('.hero, .vision');
         if (bg) {
           gsap.to(bg, {
-            xPercent: -50,
+            yPercent: -20,
             ease: "none",
             scrollTrigger: {
               trigger: section,
-              start: "left right",
-              end: "right left",
+              start: "top bottom",
+              end: "bottom top",
               scrub: true
             }
           });
@@ -3361,13 +3329,15 @@
       if (isScrolling || sectionIndex === currentSection) return;
 
       isScrolling = true;
-
-      if (isMobile) {
-        // Mobile: use native scroll
-        const targetX = sectionIndex * window.innerWidth;
-        document.querySelector('.horizontal-container').scrollTo({
-          left: targetX,
-          behavior: 'smooth'
+      
+      const sections = document.querySelectorAll('.section');
+      const targetSection = sections[sectionIndex];
+      
+      if (targetSection) {
+        // Scroll to the target section
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
 
         setTimeout(() => {
@@ -3375,18 +3345,7 @@
           isScrolling = false;
         }, 800);
       } else {
-        // Desktop: use GSAP
-        const targetX = -sectionIndex * window.innerWidth;
-
-        gsap.to(horizontalScroll, {
-          x: targetX,
-          duration: 1,
-          ease: "power2.inOut",
-          onComplete: () => {
-            updateCurrentSection(sectionIndex);
-            isScrolling = false;
-          }
-        });
+        isScrolling = false;
       }
     }
 
@@ -3554,9 +3513,7 @@
         ScrollTrigger.refresh();
 
         // Reinitialize if needed
-        if (!isMobile) {
-          initializeHorizontalScroll();
-        }
+        initializeVerticalScroll();
       }
     }
 
