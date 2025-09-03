@@ -19,5 +19,8 @@ export default defineConfig({
       }
     }
   },
-  base: './'
+  base: './',
+  define: {
+    __DOMAIN__: '"nexacoreconsultancy.com"'
+  }
 })
