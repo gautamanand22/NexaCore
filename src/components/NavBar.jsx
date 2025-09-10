@@ -52,7 +52,12 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-16 md:h-20">
                     {/* Logo */}
                     <div className="flex-shrink-0">
-                        <Link to="/" className="flex items-center space-x-2">
+                        <Link to="/" className="flex items-center space-x-3">
+                            <img
+                                src="/images/nexalogo.png"
+                                alt="NexaCore Logo"
+                                className="h-8 w-8 md:h-10 md:w-10 object-contain"
+                            />
                             <div className={`transition-colors duration-300 ${isScrolled ? 'text-blue-600' : 'text-white'
                                 }`}>
                                 <div className="text-2xl md:text-3xl font-bold">
