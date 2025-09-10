@@ -7,6 +7,13 @@ const HeroSection = () => {
     const heroRef = useRef(null)
     const botRef = useRef(null)
 
+    const scrollToContact = () => {
+        const element = document.querySelector('#contact')
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
+
     useEffect(() => {
         const handleMouseMove = (e) => {
             if (heroRef.current) {
@@ -113,7 +120,10 @@ const HeroSection = () => {
 
                         {/* Enhanced CTA Buttons */}
                         <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-8">
-                            <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 rounded-2xl font-bold text-white overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-105 transform">
+                            <button
+                                onClick={scrollToContact}
+                                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 rounded-2xl font-bold text-white overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-105 transform"
+                            >
                                 <span className="relative z-10 flex items-center justify-center gap-3">
                                     Start Your Journey
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
