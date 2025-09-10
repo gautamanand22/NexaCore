@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { gsap } from 'gsap'
+import { useTopStrip } from '../context/TopStripContext'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
+    const { isTopStripVisible } = useTopStrip()
 
     const navLinks = [
         { name: 'Home', href: '#home' },
@@ -42,7 +44,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className={`navbar fixed ${isScrolled ? 'top-0' : 'top-10'} left-0 right-0 z-40 transition-all duration-300 ${isScrolled
+        <nav className={`navbar fixed ${isScrolled || !isTopStripVisible ? 'top-0' : 'top-10'} left-0 right-0 z-40 transition-all duration-300 ${isScrolled
             ? 'bg-white shadow-lg backdrop-blur-md'
             : 'bg-transparent'
             }`}>

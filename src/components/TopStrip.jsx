@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { X, Phone, Mail, Clock } from 'lucide-react'
+import { useTopStrip } from '../context/TopStripContext'
 
 const TopStrip = () => {
-    const [isVisible, setIsVisible] = useState(true)
+    const { isTopStripVisible, setIsTopStripVisible } = useTopStrip()
 
-    if (!isVisible) return null
+    if (!isTopStripVisible) return null
 
     return (
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm py-2 relative z-40">
@@ -14,11 +15,11 @@ const TopStrip = () => {
                     <div className="hidden md:flex items-center space-x-6">
                         <div className="flex items-center space-x-2">
                             <Phone className="w-4 h-4" />
-                            <span>+1 (555) 123-4567</span>
+                            <span>+91 7979 831 185</span>
                         </div>
                         <div className="flex items-center space-x-2">
                             <Mail className="w-4 h-4" />
-                            <span>info@nexacore.com</span>
+                            <span>support@nexacoreconsultancy.com</span>
                         </div>
                         <div className="flex items-center space-x-2">
                             <Clock className="w-4 h-4" />
@@ -35,7 +36,7 @@ const TopStrip = () => {
 
                     {/* Right side - Close button */}
                     <button
-                        onClick={() => setIsVisible(false)}
+                        onClick={() => setIsTopStripVisible(false)}
                         className="ml-4 p-1 hover:bg-white/20 rounded-full transition-colors duration-200"
                         aria-label="Close announcement"
                     >

@@ -4,6 +4,9 @@ import { ParallaxProvider } from 'react-scroll-parallax'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+// Context
+import { TopStripProvider } from './context/TopStripContext'
+
 // Components
 import ScrollProgress from './components/ScrollProgress'
 import TopStrip from './components/TopStrip'
@@ -34,21 +37,23 @@ const App = () => {
   return (
     <Router>
       <ParallaxProvider>
-        <div className="overflow-x-hidden">
-          <ScrollProgress />
-          <TopStrip />
-          <Navbar />
-          <main>
-            <HeroSection />
-            <AboutSection />
-            <ServicesSection />
-            <PortfolioSection />
-            <BlogSection />
-            <TestimonialsSection />
-            <ContactSection />
-          </main>
-          <Footer />
-        </div>
+        <TopStripProvider>
+          <div className="overflow-x-hidden">
+            <ScrollProgress />
+            <TopStrip />
+            <Navbar />
+            <main>
+              <HeroSection />
+              <AboutSection />
+              <ServicesSection />
+              <PortfolioSection />
+              <BlogSection />
+              <TestimonialsSection />
+              <ContactSection />
+            </main>
+            <Footer />
+          </div>
+        </TopStripProvider>
       </ParallaxProvider>
     </Router>
   )
