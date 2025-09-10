@@ -285,34 +285,34 @@ const ContactSection = () => {
     }
 
     return (
-        <section id="contact" ref={sectionRef} className="contact-bg py-32 relative overflow-hidden">
+        <section id="contact" ref={sectionRef} className="contact-bg py-16 lg:py-32 relative overflow-hidden">
             {/* Enhanced Background Elements */}
             <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-gradient-to-br from-blue-500/20 to-cyan-500/15 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-10 w-[400px] h-[400px] bg-gradient-to-tl from-orange-500/20 to-pink-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-purple-500/5 to-indigo-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute top-1/4 -left-10 lg:left-10 w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] bg-gradient-to-br from-blue-500/20 to-cyan-500/15 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 -right-10 lg:right-10 w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] bg-gradient-to-tl from-orange-500/20 to-pink-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] lg:w-[800px] lg:h-[800px] bg-gradient-to-r from-purple-500/5 to-indigo-500/10 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="container-custom px-6 relative z-10">
+            <div className="container-custom px-4 lg:px-6 relative z-10">
                 {/* Header */}
-                <div ref={titleRef} className="text-center mb-24">
-                    <span className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-400 font-semibold text-sm rounded-full mb-8 border border-orange-500/30 backdrop-blur-sm">
+                <div ref={titleRef} className="text-center mb-12 lg:mb-24">
+                    <span className="inline-flex items-center px-4 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-400 font-semibold text-xs lg:text-sm rounded-full mb-6 lg:mb-8 border border-orange-500/30 backdrop-blur-sm">
                         💬 Get In Touch
                     </span>
-                    <h2 className="text-5xl md:text-6xl font-bold text-white mb-10 leading-tight">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight px-4 lg:px-0">
                         Let's Transform Your{' '}
                         <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-purple-400 bg-clip-text text-transparent">Business Together</span>
                     </h2>
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4 lg:px-0">
                         Ready to take your business to the next level? Our experts are here to help you
                         navigate your digital transformation journey.
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-20 mb-20">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 mb-12 lg:mb-20">
                     {/* Contact Form */}
-                    <div ref={formRef} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-10">
-                        <h3 className="text-2xl font-bold text-white mb-8">Send Us a Message</h3>
+                    <div ref={formRef} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 lg:p-10">
+                        <h3 className="text-xl lg:text-2xl font-bold text-white mb-6 lg:mb-8">Send Us a Message</h3>
 
                         {submitted ? (
                             <div className="text-center py-12">
@@ -340,8 +340,8 @@ const ContactSection = () => {
                                     </div>
                                 )}
 
-                                <form onSubmit={handleSubmit} className="space-y-8">
-                                    <div className="grid md:grid-cols-2 gap-8">
+                                <form onSubmit={handleSubmit} className="space-y-6 lg:space-y-8">
+                                    <div className="grid sm:grid-cols-2 gap-4 lg:gap-8">
                                         <div className="form-field">
                                             <label className="block text-gray-300 text-sm font-medium mb-2">
                                                 Full Name *
@@ -373,7 +373,7 @@ const ContactSection = () => {
                                         </div>
                                     </div>
 
-                                    <div className="grid md:grid-cols-2 gap-8">
+                                    <div className="grid sm:grid-cols-2 gap-4 lg:gap-8">
                                         <div className="form-field">
                                             <label className="block text-gray-300 text-sm font-medium mb-2">
                                                 Company
@@ -460,61 +460,61 @@ const ContactSection = () => {
                     </div>
 
                     {/* Contact Information */}
-                    <div ref={infoRef} className="space-y-8">
-                        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-                            <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
+                    <div ref={infoRef} className="space-y-6 lg:space-y-8">
+                        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 lg:p-8">
+                            <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 lg:mb-6">Get in Touch</h3>
 
-                            <div className="space-y-6">
-                                <div className="flex items-start space-x-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
-                                        <Phone className="w-6 h-6 text-orange-400" />
+                            <div className="space-y-4 lg:space-y-6">
+                                <div className="flex items-start space-x-3 lg:space-x-4">
+                                    <div className="flex-shrink-0 w-10 h-10 lg:w-12 lg:h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                                        <Phone className="w-5 h-5 lg:w-6 lg:h-6 text-orange-400" />
                                     </div>
-                                    <div>
-                                        <h4 className="text-white font-semibold mb-1">Call Us</h4>
-                                        <p className="text-gray-300">+91 7979 831 185</p>
-                                        <p className="text-gray-400 text-sm">24/7 Support Available</p>
+                                    <div className="min-w-0 flex-1">
+                                        <h4 className="text-white font-semibold mb-1 text-sm lg:text-base">Call Us</h4>
+                                        <p className="text-gray-300 text-sm lg:text-base break-all">+91 7979 831 185</p>
+                                        <p className="text-gray-400 text-xs lg:text-sm">24/7 Support Available</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start space-x-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                        <Mail className="w-6 h-6 text-blue-400" />
+                                <div className="flex items-start space-x-3 lg:space-x-4">
+                                    <div className="flex-shrink-0 w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                        <Mail className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400" />
                                     </div>
-                                    <div>
-                                        <h4 className="text-white font-semibold mb-1">Email Us</h4>
-                                        <p className="text-gray-300">gautamanand@nexacoreconsultancy.com</p>
-                                        <p className="text-gray-400 text-sm">Response within 24 hours</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start space-x-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                                        <MapPin className="w-6 h-6 text-purple-400" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-white font-semibold mb-1">Visit Us</h4>
-                                        <p className="text-gray-300">2nd Floor, Building 270</p>
-                                        <p className="text-gray-300">opposite Shivam Public School</p>
-                                        <p className="text-gray-300">Patliputra Colony, Patna, Bihar 800013, India</p>
+                                    <div className="min-w-0 flex-1">
+                                        <h4 className="text-white font-semibold mb-1 text-sm lg:text-base">Email Us</h4>
+                                        <p className="text-gray-300 text-sm lg:text-base break-all">gautamanand@nexacoreconsultancy.com</p>
+                                        <p className="text-gray-400 text-xs lg:text-sm">Response within 24 hours</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start space-x-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
-                                        <Clock className="w-6 h-6 text-green-400" />
+                                <div className="flex items-start space-x-3 lg:space-x-4">
+                                    <div className="flex-shrink-0 w-10 h-10 lg:w-12 lg:h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                        <MapPin className="w-5 h-5 lg:w-6 lg:h-6 text-purple-400" />
                                     </div>
-                                    <div>
-                                        <h4 className="text-white font-semibold mb-1">Business Hours</h4>
-                                        <p className="text-gray-300">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                                        <p className="text-gray-300">Saturday: 10:00 AM - 4:00 PM</p>
+                                    <div className="min-w-0 flex-1">
+                                        <h4 className="text-white font-semibold mb-1 text-sm lg:text-base">Visit Us</h4>
+                                        <p className="text-gray-300 text-sm lg:text-base">2nd Floor, Building 270</p>
+                                        <p className="text-gray-300 text-sm lg:text-base">opposite Shivam Public School</p>
+                                        <p className="text-gray-300 text-sm lg:text-base">Patliputra Colony, Patna, Bihar 800013, India</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start space-x-3 lg:space-x-4">
+                                    <div className="flex-shrink-0 w-10 h-10 lg:w-12 lg:h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                        <Clock className="w-5 h-5 lg:w-6 lg:h-6 text-green-400" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                        <h4 className="text-white font-semibold mb-1 text-sm lg:text-base">Business Hours</h4>
+                                        <p className="text-gray-300 text-sm lg:text-base">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                        <p className="text-gray-300 text-sm lg:text-base">Saturday: 10:00 AM - 4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Social Links */}
-                            <div className="mt-8 pt-8 border-t border-white/10">
-                                <h4 className="text-white font-semibold mb-4">Follow Us</h4>
-                                <div className="flex space-x-4">
+                            <div className="mt-6 lg:mt-8 pt-6 lg:pt-8 border-t border-white/10">
+                                <h4 className="text-white font-semibold mb-3 lg:mb-4 text-sm lg:text-base">Follow Us</h4>
+                                <div className="flex space-x-3 lg:space-x-4">
                                     <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition-all duration-300">
                                         <Linkedin className="w-5 h-5" />
                                     </a>
@@ -534,8 +534,8 @@ const ContactSection = () => {
                 </div>
 
                 {/* Map Section */}
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-                    <h3 className="text-2xl font-bold text-white mb-6 text-center">Find Us</h3>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 lg:p-8">
+                    <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 lg:mb-6 text-center">Find Us</h3>
                     <div className="aspect-video bg-gray-800 rounded-lg overflow-hidden relative">
                         {/* Google Maps direct business search */}
                         <iframe
@@ -580,13 +580,13 @@ const ContactSection = () => {
                             ✅ Verified Location
                         </div>
                     </div>
-                    <div className="mt-4 p-4 bg-white/5 rounded-lg">
-                        <div className="flex items-center space-x-3 text-gray-300">
-                            <MapPin className="w-5 h-5 text-purple-400 flex-shrink-0" />
-                            <div>
-                                <p className="font-semibold text-white">NexaCore Consultancy Services</p>
-                                <p className="text-sm">2nd Floor, Building 270, opposite Shivam Public School</p>
-                                <p className="text-sm">Patliputra Colony, Patna, Bihar 800013, India</p>
+                    <div className="mt-4 p-3 lg:p-4 bg-white/5 rounded-lg">
+                        <div className="flex items-start space-x-3 text-gray-300">
+                            <MapPin className="w-4 h-4 lg:w-5 lg:h-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                            <div className="min-w-0 flex-1">
+                                <p className="font-semibold text-white text-sm lg:text-base">NexaCore Consultancy Services</p>
+                                <p className="text-xs lg:text-sm">2nd Floor, Building 270, opposite Shivam Public School</p>
+                                <p className="text-xs lg:text-sm">Patliputra Colony, Patna, Bihar 800013, India</p>
                             </div>
                         </div>
                     </div>

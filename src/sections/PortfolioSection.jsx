@@ -19,7 +19,7 @@ const PortfolioSection = () => {
             category: 'Healthcare',
             description: 'Comprehensive patient management system that improved efficiency by 40%',
             fullDescription: 'A comprehensive healthcare management system that streamlines patient care, improves operational efficiency, and ensures HIPAA compliance. The solution includes patient portals, appointment scheduling, electronic health records, and real-time analytics.',
-            image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             technologies: ['React', 'Node.js', 'MongoDB', 'AWS'],
             metrics: { efficiency: '40%', satisfaction: '95%', cost: '25%' },
             duration: '8 months',
