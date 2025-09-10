@@ -147,47 +147,31 @@ const ContactSection = () => {
         try {
             let emailSent = false
 
-            // Method 1: Direct FormSubmit (Most reliable for GitHub Pages)
+            // Method 1: FormSubmit with fetch (stays on same page)
             try {
-                const formElement = document.createElement('form')
-                formElement.action = 'https://formsubmit.co/4a850f77878b1899880edd2960667cc7'
-                formElement.method = 'POST'
-                formElement.target = '_blank' // Open in new tab to avoid navigation
+                const formData_obj = new FormData()
+                formData_obj.append('name', formData.name)
+                formData_obj.append('email', formData.email)
+                formData_obj.append('company', formData.company || 'Not provided')
+                formData_obj.append('phone', formData.phone || 'Not provided')
+                formData_obj.append('service', formData.service || 'Not specified')
+                formData_obj.append('message', formData.message)
+                formData_obj.append('_subject', `🚀 New Lead from NexaCore Website - ${formData.name}`)
+                formData_obj.append('_captcha', 'false')
+                formData_obj.append('_template', 'table')
+                formData_obj.append('_autoresponse', 'Thank you for contacting NexaCore! We will get back to you within 24 hours.')
 
-                const formFields = {
-                    name: formData.name,
-                    email: formData.email,
-                    company: formData.company || 'Not provided',
-                    phone: formData.phone || 'Not provided',
-                    service: formData.service || 'Not specified',
-                    message: formData.message,
-                    _subject: `🚀 New Lead from NexaCore Website - ${formData.name}`,
-                    _captcha: 'false',
-                    _template: 'table',
-                    _autoresponse: 'Thank you for contacting NexaCore! We will get back to you within 24 hours.',
-                    _cc: 'gautamanand@nexacoreconsultancy.com'
-                }
-
-                Object.entries(formFields).forEach(([name, value]) => {
-                    const input = document.createElement('input')
-                    input.type = 'hidden'
-                    input.name = name
-                    input.value = value || ''
-                    formElement.appendChild(input)
+                const response = await fetch('https://formsubmit.co/4a850f77878b1899880edd2960667cc7', {
+                    method: 'POST',
+                    body: formData_obj
                 })
 
-                document.body.appendChild(formElement)
-                formElement.submit()
-
-                // Clean up
-                setTimeout(() => {
-                    if (document.body.contains(formElement)) {
-                        document.body.removeChild(formElement)
-                    }
-                }, 1000)
-
-                emailSent = true
-                console.log('✅ FormSubmit: Email sent successfully!')
+                if (response.ok || response.status === 200) {
+                    emailSent = true
+                    console.log('✅ FormSubmit: Email sent successfully!')
+                } else {
+                    console.log('❌ FormSubmit response not OK:', response.status)
+                }
 
             } catch (error) {
                 console.log('❌ FormSubmit failed:', error)
