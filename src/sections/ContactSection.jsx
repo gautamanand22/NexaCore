@@ -146,19 +146,19 @@ const ContactSection = () => {
 
         try {
             let emailSent = false
-            
+
             // Method 1: Direct FormSubmit (Most reliable for GitHub Pages)
             try {
                 const formElement = document.createElement('form')
                 formElement.action = 'https://formsubmit.co/4a850f77878b1899880edd2960667cc7'
                 formElement.method = 'POST'
                 formElement.target = '_blank' // Open in new tab to avoid navigation
-                
+
                 const formFields = {
                     name: formData.name,
                     email: formData.email,
                     company: formData.company || 'Not provided',
-                    phone: formData.phone || 'Not provided', 
+                    phone: formData.phone || 'Not provided',
                     service: formData.service || 'Not specified',
                     message: formData.message,
                     _subject: `🚀 New Lead from NexaCore Website - ${formData.name}`,
@@ -167,7 +167,7 @@ const ContactSection = () => {
                     _autoresponse: 'Thank you for contacting NexaCore! We will get back to you within 24 hours.',
                     _cc: 'gautamanand@nexacoreconsultancy.com'
                 }
-                
+
                 Object.entries(formFields).forEach(([name, value]) => {
                     const input = document.createElement('input')
                     input.type = 'hidden'
@@ -175,20 +175,20 @@ const ContactSection = () => {
                     input.value = value || ''
                     formElement.appendChild(input)
                 })
-                
+
                 document.body.appendChild(formElement)
                 formElement.submit()
-                
+
                 // Clean up
                 setTimeout(() => {
                     if (document.body.contains(formElement)) {
                         document.body.removeChild(formElement)
                     }
                 }, 1000)
-                
+
                 emailSent = true
                 console.log('✅ FormSubmit: Email sent successfully!')
-                
+
             } catch (error) {
                 console.log('❌ FormSubmit failed:', error)
             }
@@ -207,7 +207,7 @@ const ContactSection = () => {
                             email: formData.email,
                             company: formData.company || 'Not provided',
                             phone: formData.phone || 'Not provided',
-                            service: formData.service || 'Not specified', 
+                            service: formData.service || 'Not specified',
                             message: formData.message,
                             _subject: `NexaCore Contact Form: ${formData.name}`,
                             _replyto: formData.email
@@ -222,7 +222,7 @@ const ContactSection = () => {
                     console.log('❌ Formspree failed:', error)
                 }
             }
-            
+
             // Method 3: Web3Forms backup
             if (!emailSent) {
                 try {
@@ -235,12 +235,12 @@ const ContactSection = () => {
                     web3FormData.append('service', formData.service || 'Not specified')
                     web3FormData.append('message', formData.message)
                     web3FormData.append('subject', `NexaCore Contact: ${formData.name}`)
-                    
+
                     const response = await fetch('https://api.web3forms.com/submit', {
                         method: 'POST',
                         body: web3FormData
                     })
-                    
+
                     const result = await response.json()
                     if (result.success) {
                         emailSent = true
@@ -250,7 +250,7 @@ const ContactSection = () => {
                     console.log('❌ Web3Forms failed:', error)
                 }
             }
-            
+
             // Always show success for better UX
             setIsSubmitting(false)
             setSubmitted(true)
@@ -266,32 +266,6 @@ const ContactSection = () => {
                 message: formData.message,
                 status: emailSent ? 'Email sent via service' : 'Logged for manual processing'
             })
-
-            setTimeout(() => {
-                setSubmitted(false)
-                setFormData({
-                    name: '',
-                    email: '',
-                    company: '',
-                    phone: '',
-                    service: '',
-                    message: ''
-                })
-            }, 5000)            // Final fallback - log data and show success
-            console.log('📧 EMAIL DATA FOR MANUAL PROCESSING:', {
-                timestamp: new Date().toISOString(),
-                name: formData.name,
-                email: formData.email,
-                company: formData.company || 'Not provided',
-                phone: formData.phone || 'Not provided',
-                service: formData.service || 'Not specified',
-                message: formData.message,
-                targetEmail: 'gautamanand@nexacoreconsultancy.com'
-            })
-
-            // Show success to user
-            setIsSubmitting(false)
-            setSubmitted(true)
 
             setTimeout(() => {
                 setSubmitted(false)

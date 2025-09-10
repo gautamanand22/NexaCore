@@ -34,11 +34,16 @@ export default defineConfig({
     },
     terserOptions: {
       compress: {
-        drop_console: true,
+        drop_console: false, // Keep console logs for debugging
         drop_debugger: true
       }
-    }
+    },
+    copyPublicDir: true,
+    assetsDir: 'assets'
   },
+
+  // Public directory configuration
+  publicDir: 'public',
 
   // Development Server
   server: {
